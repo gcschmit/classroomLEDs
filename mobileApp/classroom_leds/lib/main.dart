@@ -52,17 +52,83 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  Color _led_color = Colors.orange;
+  ColorSwatch _tempMainColor;
+  Color _tempShadeColor;
+  ColorSwatch _mainColor = Colors.blue;
+  Color _shadeColor = Colors.blue[800];
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void _openDialog(String title, Widget content) {
+    showDialog(
+      context: context,
+      builder: (_) {
+        return AlertDialog(
+          contentPadding: const EdgeInsets.all(6.0),
+          title: Text(title),
+          content: content,
+          actions: [
+            FlatButton(
+              child: Text('CANCEL'),
+              onPressed: Navigator.of(context).pop,
+            ),
+            FlatButton(
+              child: Text('SUBMIT'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() => _mainColor = _tempMainColor);
+                setState(() => _shadeColor = _tempShadeColor);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _openColorPicker() async {
+    _openDialog(
+      "Color picker",
+      MaterialColorPicker(
+        selectedColor: _shadeColor,
+        onColorChange: (color) => setState(() => _tempShadeColor = color),
+        onMainColorChange: (color) => setState(() => _tempMainColor = color),
+        onBack: () => print("Back button pressed"),
+      ),
+    );
+  }
+
+  void _openMainColorPicker() async {
+    _openDialog(
+      "Main Color picker",
+      MaterialColorPicker(
+        selectedColor: _mainColor,
+        allowShades: false,
+        onMainColorChange: (color) => setState(() => _tempMainColor = color),
+      ),
+    );
+  }
+
+  void _openAccentColorPicker() async {
+    _openDialog(
+      "Accent Color picker",
+      MaterialColorPicker(
+        colors: accentColors,
+        selectedColor: _mainColor,
+        onMainColorChange: (color) => setState(() => _tempMainColor = color),
+        circleSize: 40.0,
+        spacing: 10,
+      ),
+    );
+  }
+
+  void _openFullMaterialColorPicker() async {
+    _openDialog(
+      "Full Material Color picker",
+      MaterialColorPicker(
+        colors: fullMaterialColors,
+        selectedColor: _mainColor,
+        onMainColorChange: (color) => setState(() => _tempMainColor = color),
+      ),
+    );
   }
 
   @override
@@ -100,23 +166,50 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              "Material color picker",
+              style: Theme.of(context).textTheme.headline,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            const SizedBox(height: 62.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundColor: _mainColor,
+                  radius: 35.0,
+                  child: const Text("MAIN"),
+                ),
+                const SizedBox(width: 16.0),
+                CircleAvatar(
+                  backgroundColor: _shadeColor,
+                  radius: 35.0,
+                  child: const Text("SHADE"),
+                ),
+              ],
+            ),
+            const SizedBox(height: 32.0),
+            OutlineButton(
+              onPressed: _openColorPicker,
+              child: const Text('Show color picker'),
+            ),
+            const SizedBox(height: 16.0),
+            OutlineButton(
+              onPressed: _openMainColorPicker,
+              child: const Text('Show main color picker'),
+            ),
+            const Text('(only main color)'),
+            const SizedBox(height: 16.0),
+            OutlineButton(
+              onPressed: _openAccentColorPicker,
+              child: const Text('Show accent color picker'),
+            ),
+            const SizedBox(height: 16.0),
+            OutlineButton(
+              onPressed: _openFullMaterialColorPicker,
+              child: const Text('Show full material color picker'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Choose Color',
-        child: CircleColor(
-          color: _led_color,
-          circleSize: 50,
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

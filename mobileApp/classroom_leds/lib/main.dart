@@ -229,6 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
               future: futureLED,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  _shadeColor = Color(int.parse(snapshot.data.color, radix: 16));
                   return Text(snapshot.data.color);
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");

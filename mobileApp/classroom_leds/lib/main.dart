@@ -19,6 +19,28 @@ Future<LED> fetchLED() async {
   }
 }
 
+Future<LED> updateLED(Color color) async {
+  final http.Response response = await http.put(
+    'http://10.0.2.2:3000/leds/1',
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'color': color.value.toRadixString(16),
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return LED.fromJson(json.decode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to update LED');
+  }
+}
+
 class LED {
   final int id;
   final String color;
@@ -87,12 +109,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Color _tempShadeColor;
   ColorSwatch _mainColor = Colors.blue;
   Color _shadeColor = Colors.blue[800];
-  Future<LED> futureLED;
+  Future<LED> _futureLED;
 
   @override
   void initState() {
     super.initState();
-    futureLED = fetchLED();
+    _futureLED = fetchLED();
   }
 
   void _openDialog(String title, Widget content) {
@@ -112,6 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('SUBMIT'),
               onPressed: () {
                 Navigator.of(context).pop();
+                _futureLED = updateLED(_tempMainColor);
                 setState(() => _mainColor = _tempMainColor);
                 setState(() => _shadeColor = _tempShadeColor);
               },
@@ -226,7 +249,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Center(
               child: FutureBuilder<LED>(
-              future: futureLED,
+              future: _futureLED,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   _shadeColor = Color(int.parse(snapshot.data.color, radix: 16));

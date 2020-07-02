@@ -21,14 +21,23 @@ while True:
         weekday_schedule = jsonResponse["weekdaySchedule"]
         print(weekday_schedule)
         
+        weekday_schedule.sort(key=lambda k: k['time'])
+        
         for event in weekday_schedule:
         	print(event)
         	print(event["time"])
         	print(event["color"])
         	print(event["brightness"])
         	print(event["mode"])
-        	led_color = tuple(int(event["color"][i:i+2], 16) for i in (2, 4, 6))
-        	print(led_color)
+        	
+        	time = datetime.strptime(event["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
+        	print(time)
+        	
+        	if time < datetime.now():        	
+	        	led_color = tuple(int(event["color"][i:i+2], 16) for i in (2, 4, 6))
+	        	led_brightness = event["brightness"]
+    	    	print(led_color)
+    	    	print(led_brightness)
         
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')
@@ -36,6 +45,7 @@ while True:
         print(f'Other error occurred: {err}')
 
     pixels.fill(led_color)
+    pixels.brightness(led_brightness)
     pixels.show()
     
     time.sleep(10)

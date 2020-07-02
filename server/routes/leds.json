@@ -2,21 +2,37 @@
 	{
 		"id":1,
 		"weekdaySchedule":
-		{
-			"startTime":"2020-07-02T18:44:04.029Z",
-			"endTime":"2020-07-02T18:44:04.029Z",
-			"color":"ff448aff",
-			"mode":"solid"
-		}
-	},
-	{
-		"id":2,
-		"weekdaySchedule":
-		{
-			"startTime":"2020-07-02T18:44:04.029Z",
-			"endTime":"2020-07-02T18:44:04.029Z",
-			"color":"FF00FF00",
-			"mode":"solid"
-		}
+		[
+			{
+				"time":"2020-07-02T18:44:04.029Z",
+				"color":"ff008000",
+				"brightness": 0.5,
+				"mode":"solid"
+			},
+			{
+				"time":"2020-07-02T18:44:04.029Z",
+				"color":"ff808000",
+				"brightness": 0.5,
+				"mode":"pulse"
+			},
+			{
+				"time":"2020-07-02T18:44:04.029Z",
+				"color":"ff008000",
+				"brightness": 0.5,
+				"mode":"solid"
+			},
+			{
+				"time":"2020-07-02T18:44:04.029Z",
+				"color":"ff808000",
+				"brightness": 0.5,
+				"mode":"pulse"
+			},
+			{
+				"time":"2020-07-02T18:44:04.029Z",
+				"color":"ff000080",
+				"brightness": 0.1,
+				"mode":"solid"
+			}
+		]
 	}
 ]

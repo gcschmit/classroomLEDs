@@ -24,20 +24,20 @@ while True:
         weekday_schedule.sort(key=lambda k: k['time'])
         
         for event in weekday_schedule:
-        	print(event)
-        	print(event["time"])
-        	print(event["color"])
-        	print(event["brightness"])
-        	print(event["mode"])
-        	
-        	time = datetime.strptime(event["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
-        	print(time)
-        	
-        	if time < datetime.now():        	
-	        	led_color = tuple(int(event["color"][i:i+2], 16) for i in (2, 4, 6))
-	        	led_brightness = event["brightness"]
-    	    	print(led_color)
-    	    	print(led_brightness)
+            print(event)
+            print(event["time"])
+            print(event["color"])
+            print(event["brightness"])
+            print(event["mode"])
+            
+            time = datetime.strptime(event["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
+            print(time)
+            
+            if time < datetime.now():           
+                led_color = tuple(int(event["color"][i:i+2], 16) for i in (2, 4, 6))
+                led_brightness = event["brightness"]
+                print(led_color)
+                print(led_brightness)
         
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')

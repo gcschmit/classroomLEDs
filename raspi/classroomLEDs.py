@@ -6,7 +6,7 @@ import board
 
 num_pixels = 150
 
-pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.RGB, auto_write=False, baudrate=8000000)
+pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=16000000)
 
 
 def wheel(pos):
@@ -113,7 +113,7 @@ while True:
         jsonResponse = response.json()
         print(jsonResponse)
         print(jsonResponse["color"])
-        led_color = tuple(int(jsonResponse["color"][i:i+2], 16) for i in (6, 4, 2))
+        led_color = tuple(int(jsonResponse["color"][i:i+2], 16) for i in (2, 4, 6))
         print(led_color)
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')

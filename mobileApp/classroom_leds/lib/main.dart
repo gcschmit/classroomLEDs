@@ -1,5 +1,59 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
+import 'package:http/http.dart' as http;
+
+Future<LED> fetchLED() async {
+  final response = await http.get('http://10.0.2.2:3000/leds/1');
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return LED.fromJson(json.decode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load LED');
+  }
+}
+
+Future<LED> updateLED(Color color) async {
+  final http.Response response = await http.put(
+    'http://10.0.2.2:3000/leds/1',
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'color': color.value.toRadixString(16),
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return LED.fromJson(json.decode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to update LED');
+  }
+}
+
+class LED {
+  final int id;
+  final String color;
+
+  LED({this.id, this.color});
+
+  factory LED.fromJson(Map<String, dynamic> json) {
+    return LED(
+      id: json['id'],
+      color: json['color'],
+    );
+  }
+}
 
 void main() {
   runApp(MyApp());
@@ -51,11 +105,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   ColorSwatch _tempMainColor;
   Color _tempShadeColor;
   ColorSwatch _mainColor = Colors.blue;
   Color _shadeColor = Colors.blue[800];
+  Future<LED> _futureLED;
+
+  @override
+  void initState() {
+    super.initState();
+    _futureLED = fetchLED();
+  }
 
   void _openDialog(String title, Widget content) {
     showDialog(
@@ -74,6 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('SUBMIT'),
               onPressed: () {
                 Navigator.of(context).pop();
+                _futureLED = updateLED(_tempMainColor);
                 setState(() => _mainColor = _tempMainColor);
                 setState(() => _shadeColor = _tempShadeColor);
               },
@@ -167,7 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               "Material color picker",
-              style: Theme.of(context).textTheme.headline,
+              style: Theme.of(context).textTheme.headline5,
             ),
             const SizedBox(height: 62.0),
             Row(
@@ -186,27 +247,42 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 32.0),
-            OutlineButton(
-              onPressed: _openColorPicker,
-              child: const Text('Show color picker'),
-            ),
-            const SizedBox(height: 16.0),
-            OutlineButton(
-              onPressed: _openMainColorPicker,
-              child: const Text('Show main color picker'),
-            ),
-            const Text('(only main color)'),
-            const SizedBox(height: 16.0),
-            OutlineButton(
-              onPressed: _openAccentColorPicker,
-              child: const Text('Show accent color picker'),
-            ),
-            const SizedBox(height: 16.0),
-            OutlineButton(
-              onPressed: _openFullMaterialColorPicker,
-              child: const Text('Show full material color picker'),
-            ),
+            Center(
+              child: FutureBuilder<LED>(
+              future: _futureLED,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  _shadeColor = Color(int.parse(snapshot.data.color, radix: 16));
+                  return Text(snapshot.data.color);
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+
+                // By default, show a loading spinner.
+                return CircularProgressIndicator();
+              },
+              ),),
+              const SizedBox(height: 32.0),
+              OutlineButton(
+                onPressed: _openColorPicker,
+                child: const Text('Show color picker'),
+              ),
+              const SizedBox(height: 16.0),
+              OutlineButton(
+                onPressed: _openMainColorPicker,
+                child: const Text('Show main color picker'),
+              ),
+              const Text('(only main color)'),
+              const SizedBox(height: 16.0),
+              OutlineButton(
+                onPressed: _openAccentColorPicker,
+                child: const Text('Show accent color picker'),
+              ),
+              const SizedBox(height: 16.0),
+              OutlineButton(
+                onPressed: _openFullMaterialColorPicker,
+                child: const Text('Show full material color picker'),
+              ),
           ],
         ),
       ),

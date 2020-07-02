@@ -1,4 +1,5 @@
 import time
+import datetime
 import requests
 from requests.exceptions import HTTPError
 import adafruit_dotstar as dotstar
@@ -9,6 +10,8 @@ num_pixels = 10
 pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=16000000)
 
 while True:
+    led_color = (0, 0, 0)
+    led_brightness = (0.2)
 
     try:
         url = "http://192.168.1.139:3000/leds/1"
@@ -30,14 +33,15 @@ while True:
             print(event["brightness"])
             print(event["mode"])
             
-            time = datetime.strptime(event["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
-            print(time)
+            sch_time = datetime.datetime.strptime(event["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
+            now = datetime.datetime.now()
+            print(sch_time)
+            print(now)
             
-            if time < datetime.now():           
+            if sch_time < now:           
                 led_color = tuple(int(event["color"][i:i+2], 16) for i in (2, 4, 6))
-                led_brightness = event["brightness"]
+                led_color = led_color + (event["brightness"],)
                 print(led_color)
-                print(led_brightness)
         
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')
@@ -45,7 +49,6 @@ while True:
         print(f'Other error occurred: {err}')
 
     pixels.fill(led_color)
-    pixels.brightness(led_brightness)
     pixels.show()
     
     time.sleep(10)

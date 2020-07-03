@@ -137,11 +137,38 @@ const createScene = async (req, res, next) => {
       time: req.body.time,
       color: req.body.color,
       brightness: req.body.brightness,
-      mode: req.body.solid,
+      mode: req.body.mode,
     };
     led.scenes.push(newScene);
     fs.writeFileSync(ledsFilePath, JSON.stringify(leds));
     res.status(201).json(newScene);
+  } catch (e) {
+    next(e);
+  }
+};
+
+const updateScene = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(ledsFilePath);
+    const leds = JSON.parse(data);
+    const led = leds.find(led => led.id === Number(req.params.ledID));
+    if (!led) {
+      const err = new Error('LED not found');
+      err.status = 404;
+      throw err;
+    }
+    const scene = led.scenes.find(scene => scene.id === Number(req.params.sceneID));
+    if (!scene) {
+      const err = new Error('scene not found');
+      err.status = 404;
+      throw err;
+    }
+    scene.time = req.body.time;
+    scene.color = req.body.color;
+    scene.brightness = req.body.brightness;
+    scene.mode = req.body.mode;
+    fs.writeFileSync(ledsFilePath, JSON.stringify(leds));
+    res.status(200).json(scene);
   } catch (e) {
     next(e);
   }
@@ -165,6 +192,7 @@ router
 router
   .route('/leds/:ledID/scenes/:sceneID')
   .get(getScene)
+  .put(updateScene)
   .delete(deleteScene);
   
 module.exports = router;

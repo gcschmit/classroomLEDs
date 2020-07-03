@@ -1,33 +1,38 @@
 [
 	{
 		"id":1,
-		"weekdaySchedule":
+		"scenes":
 		[
 			{
+				"id": 1,
 				"time":"2020-07-02T15:44:04.029Z",
 				"color":"ff00ff00",
 				"brightness": 0.5,
 				"mode":"solid"
 			},
 			{
+				"id": 2,
 				"time":"2020-07-02T16:44:04.029Z",
 				"color":"ffffff00",
 				"brightness": 0.5,
 				"mode":"pulse"
 			},
 			{
+				"id": 3,
 				"time":"2020-07-02T13:44:04.029Z",
 				"color":"ff00ff00",
 				"brightness": 0.5,
 				"mode":"solid"
 			},
 			{
+				"id": 4,
 				"time":"2020-07-02T14:44:04.029Z",
 				"color":"ffffff00",
 				"brightness": 0.5,
 				"mode":"pulse"
 			},
 			{
+				"id": 5,
 				"time":"2020-07-02T19:44:04.029Z",
 				"color":"ff0000ff",
 				"brightness": 0.1,

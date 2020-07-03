@@ -32,7 +32,7 @@ while True:
         print(f'Other error occurred: {err}')
 
     
-    weekday_schedule = jsonResponse["weekdaySchedule"]
+    weekday_schedule = jsonResponse["scenes"]
     print(weekday_schedule)
     
     # don't assume that the scenes are sorted by time; it is important that they are

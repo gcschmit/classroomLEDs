@@ -15,11 +15,11 @@ class SceneListItemWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(12),
       child: InkWell(
-        onTap: () => navigateToViewScenePage(scene, context),
+        onTap: () => navigateToEditScenePage(scene, context),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(time, style: Theme.of(context).textTheme.headline6),
+            Text("$time: ${scene.mode}", style: Theme.of(context).textTheme.headline6),
             SizedBox(height: 6),
             CircleAvatar(
               backgroundColor: scene.color,

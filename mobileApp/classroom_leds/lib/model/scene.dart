@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class Scene implements Comparable {
   final int id;
-  final DateTime time;
-  final Color color;
-  final String mode;
+  DateTime time;
+  Color color;
+  String mode;
 
   Scene(this.id, this.time, this.color, this.mode);
 

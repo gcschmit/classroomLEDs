@@ -82,6 +82,43 @@ const getScene = async (req, res, next) => {
   }
 };
 
+const deleteScene = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(ledsFilePath);
+    const leds = JSON.parse(data);
+    const led = leds.find(led => led.id === Number(req.params.ledID));
+    if (!led) {
+      const err = new Error('LED not found');
+      err.status = 404;
+      throw err;
+    }
+    const scene = led.scenes.find(scene => scene.id === Number(req.params.sceneID));
+    if (!scene) {
+      const err = new Error('scene not found');
+      err.status = 404;
+      throw err;
+    }
+    const newLEDs = leds.map(led => {
+      if (led.id === Number(req.params.ledID)) {
+        const newScenes = led.scenes.map(scene => {
+		  if (scene.id === Number(req.params.sceneID)) {
+			return null;
+		  } else {
+			return scene;
+		  }
+		});
+		return newScenes;
+      } else {
+        return led;
+      }
+    });
+    fs.writeFileSync(ledsFilePath, JSON.stringify(newLEDs));
+    res.status(200).end();
+  } catch (e) {
+    next(e);
+  }
+};
+
 
 
 router
@@ -95,10 +132,11 @@ router
 
 router
   .route('/leds/:id/scenes')
-  .get(getLED)
+  .get(getLED);
   
 router
   .route('/leds/:ledID/scenes/:sceneID')
   .get(getScene)
+  .delete(deleteScene);
   
 module.exports = router;

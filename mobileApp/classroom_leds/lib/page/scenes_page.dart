@@ -15,7 +15,7 @@ class _ScenesPageState extends State<ScenesPage> {
   @override
   void initState() {
     super.initState();
-    sceneList = fetchScenes();
+    sceneList = fetchScenesFromServer();
   }
 
   @override

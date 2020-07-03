@@ -1,3 +1,4 @@
+import 'package:classroom_leds/util/server_util.dart';
 import 'package:flutter/material.dart';
 import 'package:classroom_leds/model/scene.dart';
 import 'package:classroom_leds/widget/scene_list_item_widget.dart';
@@ -45,12 +46,14 @@ class _SceneListWidgetState extends State<SceneListWidget> {
   }
 
   void deleteScene(index) {
+    deleteSceneFromServer(scenesList[index].id);
     setState(() {
       scenesList.removeAt(index);
     });
   }
 
   void undoDeletion(index, item) {
+    addSceneToServer(item);
     setState(() {
       scenesList.insert(index, item);
     });

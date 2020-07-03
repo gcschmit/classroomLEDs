@@ -19,8 +19,9 @@ class Scene implements Comparable {
     {
       'id': id,
       'time': time.toIso8601String(),
-      'color': "ff" + color.red.toRadixString(16) + color.green.toRadixString(16) +
-        color.blue.toRadixString(16),
+      'color': "ff" + color.red.toRadixString(16).padLeft(2, '0') +
+        color.green.toRadixString(16).padLeft(2, '0') +
+        color.blue.toRadixString(16).padLeft(2, '0'),
       'brightness': color.alpha / 255.0,
       'mode': mode,
     };

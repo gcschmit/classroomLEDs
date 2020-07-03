@@ -17,6 +17,19 @@ class Scene implements Comparable {
         mode: json['mode']);
   }
 
+  String toJson() {
+    final timeAsString = time.toIso8601String();
+    final colorAsString = "ff" + color.red.toRadixString(16) + color.green.toRadixString(16) +
+        color.blue.toRadixString(16);
+    final brightness = color.alpha / 256.0;
+    return "{" +
+				"\"time\":\"$timeAsString\"," +
+				"\"color\":\"$colorAsString\"," +
+				"\"brightness\": $brightness," +
+				"\"mode\":\"$mode\"" +
+			  "}";
+  }
+
   @override
   int compareTo(other) {
     if (this.time == null || other == null) {

@@ -34,5 +34,16 @@ void deleteSceneFromServer(int sceneID) async {
 }
 
 void addSceneToServer(Scene scene) async {
-  
+  // set up POST request arguments
+  String url = 'http://10.0.2.2:3000/leds/1/scenes';
+  Map<String, String> headers = {"Content-type": "application/json"};
+  String json = scene.toJson();
+  print(json);
+  // make POST request
+  final response = await http.post(url, headers: headers, body: json);
+  if (response.statusCode != 201) {
+    // If the server did not return a 201 response,
+    // then throw an exception.
+    throw Exception('Failed to add scene');
+  }
 }

@@ -1,3 +1,4 @@
+import 'package:classroom_leds/util/server_util.dart';
 import 'package:flutter/material.dart';
 import 'package:classroom_leds/model/scene.dart';
 import 'package:classroom_leds/util/navigation_util.dart';
@@ -41,6 +42,7 @@ class _SceneListItemWidgetState extends State<SceneListItemWidget> {
     final result = await navigateToEditScenePage(scene, context);
 
     if (result != null && result is Scene) {
+      updateSceneOnServer(result);
       setState(() {
         scene = result;
       });

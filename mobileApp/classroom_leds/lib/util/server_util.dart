@@ -37,7 +37,7 @@ void addSceneToServer(Scene scene) async {
   // set up POST request arguments
   String url = 'http://10.0.2.2:3000/leds/1/scenes';
   Map<String, String> headers = {"Content-type": "application/json"};
-  String json = scene.toJson();
+  String json = jsonEncode(scene);
   print(json);
   // make POST request
   final response = await http.post(url, headers: headers, body: json);

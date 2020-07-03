@@ -6,29 +6,24 @@ class Scene implements Comparable {
   final Color color;
   final String mode;
 
-  Scene({this.id, this.time, this.color, this.mode});
+  Scene(this.id, this.time, this.color, this.mode);
 
-  factory Scene.fromJson(Map<String, dynamic> json) {
-    return Scene(
-        id: json['id'],
-        time: DateTime.parse(json['time']),
-        color: Color(int.parse(json['color'], radix: 16))
+  Scene.fromJson(Map<String, dynamic> json)
+    : id = json['id'],
+        time = DateTime.parse(json['time']),
+        color = Color(int.parse(json['color'], radix: 16))
             .withAlpha((json['brightness'] * 255).toInt()),
-        mode: json['mode']);
-  }
+        mode = json['mode'];
 
-  String toJson() {
-    final timeAsString = time.toIso8601String();
-    final colorAsString = "ff" + color.red.toRadixString(16) + color.green.toRadixString(16) +
-        color.blue.toRadixString(16);
-    final brightness = color.alpha / 256.0;
-    return "{" +
-				"\"time\":\"$timeAsString\"," +
-				"\"color\":\"$colorAsString\"," +
-				"\"brightness\": $brightness," +
-				"\"mode\":\"$mode\"" +
-			  "}";
-  }
+  Map<String, dynamic>  toJson() =>
+    {
+      'id': id,
+      'time': time.toIso8601String(),
+      'color': "ff" + color.red.toRadixString(16) + color.green.toRadixString(16) +
+        color.blue.toRadixString(16),
+      'brightness': color.alpha / 255.0,
+      'mode': mode,
+    };
 
   @override
   int compareTo(other) {

@@ -10,7 +10,7 @@ const getLED = async (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
-    const led = leds.find(led => led.id === Number(req.params.id));
+    const led = leds.find(led => led.id === Number(req.params.ledID));
     if (!led) {
       const err = new Error('LED not found');
       err.status = 404;
@@ -26,18 +26,18 @@ const updateLED = async (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
-    const led = leds.find(led => led.id === Number(req.params.id));
+    const led = leds.find(led => led.id === Number(req.params.ledID));
     if (!led) {
       const err = new Error('LED not found');
       err.status = 404;
       throw err;
     }
     const newLEDData = {
-      id: Number(req.params.id),
+      id: Number(req.params.ledID),
       color: req.body.color,
     };
     const newLEDs = leds.map(led => {
-      if (led.id === Number(req.params.id)) {
+      if (led.id === Number(req.params.ledID)) {
         return newLEDData;
       } else {
         return led;
@@ -119,6 +119,31 @@ const deleteScene = async (req, res, next) => {
   }
 };
 
+const createScene = async (req, res, next) => {
+  try {
+    const data = fs.readFileSync(ledsFilePath);
+    const leds = JSON.parse(data);
+    const led = leds.find(led => led.id === Number(req.params.ledID));
+    if (!led) {
+      const err = new Error('LED not found');
+      err.status = 404;
+      throw err;
+    }
+    newID = Math.max.apply(Math, led.scenes.map(function(o) { return o.id; })) + 1;
+    const newScene = {
+      id: newID,
+      time: req.body.time,
+      color: req.body.color,
+      brightness: req.body.brightness,
+      mode: req.body.solid,
+    };
+    led.scenes.push(newScene);
+    fs.writeFileSync(ledsFilePath, JSON.stringify(leds));
+    res.status(201).json(newScene);
+  } catch (e) {
+    next(e);
+  }
+};
 
 
 router
@@ -126,13 +151,14 @@ router
   .get(getLEDs);
 
 router
-  .route('/leds/:id')
+  .route('/leds/:ledID')
   .get(getLED)
   .put(updateLED);
 
 router
-  .route('/leds/:id/scenes')
-  .get(getLED);
+  .route('/leds/:ledID/scenes')
+  .get(getLED)
+  .post(createScene);
   
 router
   .route('/leds/:ledID/scenes/:sceneID')

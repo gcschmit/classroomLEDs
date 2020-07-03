@@ -1,6 +1,7 @@
 import time
 import datetime
 import requests
+import threading
 from requests.exceptions import HTTPError
 import adafruit_dotstar as dotstar
 import board
@@ -19,20 +20,31 @@ def update_LEDs():
     #   still unresolved issues regarding colors.   
     pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=16000000)
     
+    temp_led_brightness = 0;
+    dimming = True;
     
     while True:
-        temp_led_brightness -= 0.05
+        if dimming:
+            temp_led_brightness -= 0.005
+        else:
+            temp_led_brightness += 0.005
+        
         if temp_led_brightness < 0:
+            temp_led_brightness = 0 
+            dimming = False
+        elif temp_led_brightness > led_brightness:
             temp_led_brightness = led_brightness
+            dimming = True
         
         if led_mode == 0:
             color_with_brightness = led_color + (led_brightness,)
         else:
             color_with_brightness = led_color + (temp_led_brightness,)
         
+        #print(color_with_brightness)
         pixels.fill(color_with_brightness)
         pixels.show()
-        time.sleep(0.1)
+        time.sleep(0.01)
 
 
 led_thread = threading.Thread(target = update_LEDs, daemon=True)

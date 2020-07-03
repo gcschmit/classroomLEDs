@@ -106,8 +106,10 @@ const deleteScene = async (req, res, next) => {
 		  } else {
 			return scene;
 		  }
-		});
-		return newScenes;
+		})
+		.filter(scene => scene !== null);
+		led.scenes = newScenes;
+		return led;
       } else {
         return led;
       }

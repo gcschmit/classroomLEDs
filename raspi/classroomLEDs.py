@@ -60,7 +60,7 @@ while True:
             led_color = tuple(int(scene["color"][i:i+2], 16) for i in (2, 4, 6))
             led_color = led_color + (scene["brightness"],)
             print(led_color)
-            led_mode = led_modes{scene["mode"]}
+            led_mode = led_modes[scene["mode"]]
             print(led_mode)
     
     pixels.fill(led_color)

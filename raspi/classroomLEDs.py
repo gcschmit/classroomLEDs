@@ -32,29 +32,31 @@ while True:
         print(f'Other error occurred: {err}')
 
     
-    weekday_schedule = jsonResponse["scenes"]
-    print(weekday_schedule)
+    scenes = jsonResponse["scenes"]
+    print(scenes)
     
     # don't assume that the scenes are sorted by time; it is important that they are
     #	since the LEDs will be set to the most recent scence whose time has passed
-    weekday_schedule.sort(key=lambda k: k['time'])
+    scenes.sort(key=lambda k: k['time'])
     
-    for event in weekday_schedule:
-        print(event)
-        print(event["time"])
-        print(event["color"])
-        print(event["brightness"])
-        print(event["mode"])
+    for scene in scenes:
+        print(scene)
+        print(scene["time"])
+        print(scene["color"])
+        print(scene["brightness"])
+        print(scene["mode"])
         
-        sch_time = datetime.datetime.strptime(event["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
-        now = datetime.datetime.now()
+        sch_date = datetime.datetime.strptime(scene["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
+        date_now = datetime.datetime.now()
+        sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
+        now = datetime.time(date_now.hour, date_now.minute, date_now.second)
         print(sch_time)
         print(now)
         
         if sch_time < now:
         	# the color can be specified as a tuple with 4 elements: (R, G, B, brightness)
-            led_color = tuple(int(event["color"][i:i+2], 16) for i in (2, 4, 6))
-            led_color = led_color + (event["brightness"],)
+            led_color = tuple(int(scene["color"][i:i+2], 16) for i in (2, 4, 6))
+            led_color = led_color + (scene["brightness"],)
             print(led_color)
         
     pixels.fill(led_color)

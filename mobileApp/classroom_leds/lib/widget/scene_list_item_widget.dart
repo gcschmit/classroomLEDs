@@ -2,20 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:classroom_leds/model/scene.dart';
 import 'package:classroom_leds/util/navigation_util.dart';
 
-class SceneListItemWidget extends StatelessWidget {
+class SceneListItemWidget extends StatefulWidget {
   final Scene scene;
-
   SceneListItemWidget(this.scene);
+  @override
+  _SceneListItemWidgetState createState() => _SceneListItemWidgetState(scene);
+}
+
+class _SceneListItemWidgetState extends State<SceneListItemWidget> {
+  Scene scene;
+
+  _SceneListItemWidgetState(this.scene);
 
   @override
   Widget build(BuildContext context) {
     final time = scene.time.hour.toString() + ":" +
-        scene.time.minute.toString().padLeft(2, '0') + ":" +
-        scene.time.second.toString().padLeft(2, '0');
+        scene.time.minute.toString().padLeft(2, '0');
     return Padding(
       padding: const EdgeInsets.all(12),
       child: InkWell(
-        onTap: () => navigateToEditScenePage(scene, context),
+        onTap: () => onScenePressed(context),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -29,5 +35,15 @@ class SceneListItemWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onScenePressed(BuildContext context) async {
+    final result = await navigateToEditScenePage(scene, context);
+
+    if (result != null && result is Scene) {
+      setState(() {
+        scene = result;
+      });
+    }
   }
 }

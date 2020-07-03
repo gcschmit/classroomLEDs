@@ -3,8 +3,8 @@ import 'package:classroom_leds/model/scene.dart';
 import 'package:classroom_leds/page/edit_scene_page.dart';
 //import 'package:classroom_leds/page/view_scene_page.dart';
 
-void navigateToEditScenePage(Scene scene, BuildContext context) {
-  Navigator.of(context).push(
+Future navigateToEditScenePage(Scene scene, BuildContext context) {
+  return Navigator.of(context).push(
     MaterialPageRoute(builder: (context) => EditScenePage(scene)),
   );
 }

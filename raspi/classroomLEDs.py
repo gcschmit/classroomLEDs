@@ -12,27 +12,27 @@ led_brightness = 0
 led_mode = 0 # 0: solid; 1: pulse
 
 def update_LEDs():
-	# Use SPI on the Raspberry Pi which is faster than bit banging.
-	# Explicitly slow the baud rate to 16 MHz using the undocumented parameter which
-	#   appears to improve reliability.
-	# The pixel order of the DotStar strips that we have appear to be BGR, but there are
-	#   still unresolved issues regarding colors.   
-	pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=16000000)
-	
-	
-	while True:
-		temp_led_brightness -= 0.05
-		if temp_led_brightness < 0:
-			temp_led_brightness = led_brightness
-		
-		if led_mode == 0:
-			color_with_brightness = led_color + (led_brightness,)
-		else:
-			color_with_brightness = led_color + (temp_led_brightness,)
-		
-		pixels.fill(color_with_brightness)
-    	pixels.show()
-    	time.sleep(0.1)
+    # Use SPI on the Raspberry Pi which is faster than bit banging.
+    # Explicitly slow the baud rate to 16 MHz using the undocumented parameter which
+    #   appears to improve reliability.
+    # The pixel order of the DotStar strips that we have appear to be BGR, but there are
+    #   still unresolved issues regarding colors.   
+    pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=16000000)
+    
+    
+    while True:
+        temp_led_brightness -= 0.05
+        if temp_led_brightness < 0:
+            temp_led_brightness = led_brightness
+        
+        if led_mode == 0:
+            color_with_brightness = led_color + (led_brightness,)
+        else:
+            color_with_brightness = led_color + (temp_led_brightness,)
+        
+        pixels.fill(color_with_brightness)
+        pixels.show()
+        time.sleep(0.1)
 
 
 led_thread = threading.Thread(target = update_LEDs, daemon=True)

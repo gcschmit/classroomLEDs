@@ -20,6 +20,7 @@ class _EditScenePageState extends State<EditScenePage> {
 
   @override
   Widget build(BuildContext context) {
+    final timeAsString = "${_scene.time.hour}:" + _scene.time.minute.toString().padLeft(2, '0');
     return Scaffold(
       appBar: AppBar(title: Text("Edit this scene")),
       floatingActionButton: Builder(
@@ -38,7 +39,7 @@ class _EditScenePageState extends State<EditScenePage> {
         child: Column(
           children: <Widget>[
             ListTile(
-              title: Text("Time: ${_scene.time.hour}:${_scene.time.minute}"),
+              title: Text("Time: $timeAsString"),
               trailing: Icon(Icons.keyboard_arrow_down),
               onTap: _pickTime,
             ),

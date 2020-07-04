@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:classroom_leds/model/scene.dart';
 
+final String ip = "192.168.1.139"; // "10.0.2.2"
+
 Future<List<Scene>> fetchScenesFromServer() async {
-  final response = await http.get('http://10.0.2.2:3000/leds/1');
+  final response = await http.get('http://$ip:3000/leds/1');
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -23,7 +25,7 @@ Future<List<Scene>> fetchScenesFromServer() async {
 }
 
 void deleteSceneFromServer(int sceneID) async {
-  final response = await http.delete('http://10.0.2.2:3000/leds/1/scenes/$sceneID');
+  final response = await http.delete('http://$ip:3000/leds/1/scenes/$sceneID');
 
   if (response.statusCode == 200) {
   } else {
@@ -35,7 +37,7 @@ void deleteSceneFromServer(int sceneID) async {
 
 void addSceneToServer(Scene scene) async {
   // set up POST request arguments
-  String url = 'http://10.0.2.2:3000/leds/1/scenes';
+  String url = 'http://$ip:3000/leds/1/scenes';
   Map<String, String> headers = {"Content-type": "application/json"};
   String json = jsonEncode(scene);
   // make POST request
@@ -49,7 +51,7 @@ void addSceneToServer(Scene scene) async {
 
 void updateSceneOnServer(Scene scene) async {
   // set up POST request arguments
-  String url = 'http://10.0.2.2:3000/leds/1/scenes/${scene.id}';
+  String url = 'http://$ip:3000/leds/1/scenes/${scene.id}';
   Map<String, String> headers = {"Content-type": "application/json"};
   String json = jsonEncode(scene);
   // make PUT request

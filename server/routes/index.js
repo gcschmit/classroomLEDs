@@ -22,34 +22,6 @@ const getLED = async (req, res, next) => {
   }
 };
 
-const updateLED = async (req, res, next) => {
-  try {
-    const data = fs.readFileSync(ledsFilePath);
-    const leds = JSON.parse(data);
-    const led = leds.find(led => led.id === Number(req.params.ledID));
-    if (!led) {
-      const err = new Error('LED not found');
-      err.status = 404;
-      throw err;
-    }
-    const newLEDData = {
-      id: Number(req.params.ledID),
-      color: req.body.color,
-    };
-    const newLEDs = leds.map(led => {
-      if (led.id === Number(req.params.ledID)) {
-        return newLEDData;
-      } else {
-        return led;
-      }
-    });
-    fs.writeFileSync(ledsFilePath, JSON.stringify(newLEDs));
-    res.status(200).json(newLEDData);
-  } catch (e) {
-    next(e);
-  }
-};
-
 const getLEDs = async (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
@@ -182,7 +154,6 @@ router
 router
   .route('/leds/:ledID')
   .get(getLED)
-  .put(updateLED);
 
 router
   .route('/leds/:ledID/scenes')

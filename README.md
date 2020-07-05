@@ -131,3 +131,6 @@ The main thread in the script gets the scenes for the LED strip with ID 1 every 
 
 ### design
 
+The UI of the app needs significant work.
+
+The internal design of the app needs a review and probably significant cleanup.

@@ -11,6 +11,7 @@ class ScenesPage extends StatefulWidget {
 
 class _ScenesPageState extends State<ScenesPage> {
   Future<List<Scene>> sceneList;
+  SceneListWidget _sceneListWidget;
 
   @override
   void initState() {
@@ -28,7 +29,8 @@ class _ScenesPageState extends State<ScenesPage> {
               future: sceneList,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return SceneListWidget(snapshot.data);
+                  _sceneListWidget = SceneListWidget(snapshot.data);
+                  return _sceneListWidget;
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
                 }
@@ -47,11 +49,13 @@ class _ScenesPageState extends State<ScenesPage> {
   }
 
   void onAddButtonPressed(BuildContext context) async {
-    final result = null; //await navigateToAddScenePage(context);
+    final scene = Scene(0, DateTime.now(), Colors.blue, "solid");
+    final result = await navigateToEditScenePage(scene, context);
 
     if (result != null && result is Scene) {
+      addSceneToServer(result);
       setState(() {
-        //sceneList.add(result);
+        _sceneListWidget.scenesList.add(result);
       });
     }
   }

@@ -27,11 +27,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-
-//app.get('/', (req, res) => res.send('Hello World!'))
-
-//app.get('/leds', (req, res) => res.json({color: color}))
-//app.get('/leds/:ledID', (req, res) => res.json({color: color}))
-//app.put('/leds', (req, res) => res.send('color: ' + color))
-
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

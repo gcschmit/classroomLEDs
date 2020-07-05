@@ -6,7 +6,7 @@ from requests.exceptions import HTTPError
 import adafruit_dotstar as dotstar
 import board
 
-num_pixels = 10
+num_pixels = 180
 led_modes = {"solid": 0, "pulse": 1}
 led_color = (0, 0, 0)
 led_brightness = 0
@@ -81,7 +81,7 @@ while True:
         print(scene["brightness"])
         print(scene["mode"])
         
-        sch_date = datetime.datetime.strptime(scene["time"], '%Y-%m-%dT%H:%M:%S.%fZ')
+        sch_date = datetime.datetime.strptime(scene["time"], '%Y-%m-%dT%H:%M:%S.%f')
         date_now = datetime.datetime.now()
         sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
         now = datetime.time(date_now.hour, date_now.minute, date_now.second)

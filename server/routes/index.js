@@ -6,7 +6,7 @@ const router = express.Router();
 
 const ledsFilePath = path.join(__dirname, './leds.json');
 
-const getLED = async (req, res, next) => {
+const getLED = (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
@@ -22,7 +22,7 @@ const getLED = async (req, res, next) => {
   }
 };
 
-const getLEDs = async (req, res, next) => {
+const getLEDs = (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
@@ -32,7 +32,7 @@ const getLEDs = async (req, res, next) => {
   }
 };
 
-const getScene = async (req, res, next) => {
+const getScene = (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
@@ -54,7 +54,7 @@ const getScene = async (req, res, next) => {
   }
 };
 
-const deleteScene = async (req, res, next) => {
+const deleteScene = (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
@@ -70,30 +70,16 @@ const deleteScene = async (req, res, next) => {
       err.status = 404;
       throw err;
     }
-    const newLEDs = leds.map(led => {
-      if (led.id === Number(req.params.ledID)) {
-        const newScenes = led.scenes.map(scene => {
-		  if (scene.id === Number(req.params.sceneID)) {
-			return null;
-		  } else {
-			return scene;
-		  }
-		})
-		.filter(scene => scene !== null);
-		led.scenes = newScenes;
-		return led;
-      } else {
-        return led;
-      }
-    });
-    fs.writeFileSync(ledsFilePath, JSON.stringify(newLEDs));
+    led.scenes = led.scenes.filter(scene => scene.id !== Number(req.params.sceneID));
+    console.log(led);
+    fs.writeFileSync(ledsFilePath, JSON.stringify(leds));
     res.status(200).end();
   } catch (e) {
     next(e);
   }
 };
 
-const createScene = async (req, res, next) => {
+const createScene = (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);
@@ -103,7 +89,7 @@ const createScene = async (req, res, next) => {
       err.status = 404;
       throw err;
     }
-    newID = Math.max.apply(Math, led.scenes.map(function(o) { return o.id; })) + 1;
+    newID = Math.max.apply(Math, led.scenes.map(o => { return o.id; })) + 1;
     const newScene = {
       id: newID,
       time: req.body.time,
@@ -119,7 +105,7 @@ const createScene = async (req, res, next) => {
   }
 };
 
-const updateScene = async (req, res, next) => {
+const updateScene = (req, res, next) => {
   try {
     const data = fs.readFileSync(ledsFilePath);
     const leds = JSON.parse(data);

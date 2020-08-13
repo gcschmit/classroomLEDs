@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:classroom_leds/model/scene.dart';
 
@@ -21,6 +22,8 @@ Future<List<Scene>> fetchScenesFromServer() async {
     // then throw an exception.
     throw Exception('Failed to load LED');
   }
+
+  // !!! use stream instead
 }
 
 void deleteSceneFromServer(int sceneID) async {
@@ -46,6 +49,8 @@ void addSceneToServer(Scene scene) async {
     // then throw an exception.
     throw Exception('Failed to add scene');
   }
+
+  // !!! also send scene through stream
 }
 
 void updateSceneOnServer(Scene scene) async {
@@ -60,4 +65,20 @@ void updateSceneOnServer(Scene scene) async {
     // then throw an exception.
     throw Exception('Failed to update scene');
   }
+
+  // !!! also send updated scene through stream
+}
+
+
+class SceneStream {
+  SceneStream() {
+    Timer.periodic(Duration(seconds: 10), (t) {
+      _controller.sink.add(Scene(0, DateTime.now(), Colors.blue, "solid"));
+      print(DateTime.now());
+    });
+  }
+
+  final _controller = StreamController<Scene>();
+
+  Stream<Scene> get stream => _controller.stream;
 }

@@ -10,13 +10,9 @@ class ScenesPage extends StatefulWidget {
 }
 
 class _ScenesPageState extends State<ScenesPage> {
-  Future<List<Scene>> sceneList;
-  SceneListWidget _sceneListWidget;
-
   @override
   void initState() {
     super.initState();
-    sceneList = fetchScenesFromServer();
   }
 
   @override
@@ -25,20 +21,19 @@ class _ScenesPageState extends State<ScenesPage> {
       appBar: AppBar(
         title: Text("Classroom LEDs"),
       ),
-      body: FutureBuilder<List<Scene>>(
-              future: sceneList,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  _sceneListWidget = SceneListWidget(snapshot.data);
-                  return _sceneListWidget;
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-
-                // By default, show a loading spinner.
-                return CircularProgressIndicator();
-              },
-              ),
+      body: StreamBuilder<Scene>(
+        stream: SceneStream().stream,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          } else {
+            print("new snapshot: " + snapshot.data.time.toString());
+            return SceneListWidget([snapshot.data]);
+          }
+        },
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         icon: Icon(Icons.add),
@@ -54,9 +49,6 @@ class _ScenesPageState extends State<ScenesPage> {
 
     if (result != null && result is Scene) {
       addSceneToServer(result);
-      setState(() {
-        _sceneListWidget.scenesList.add(result);
-      });
     }
   }
 }

@@ -19,6 +19,7 @@ class _SceneListWidgetState extends State<SceneListWidget> {
     return ListView.builder(
       itemCount: scenesList.length,
       itemBuilder: (BuildContext context, int index) {
+        print("building new item" + scenesList.elementAt(index).time.toString());
         return Dismissible(
           background: stackBehindDismiss(),
           key: ObjectKey(scenesList[index]),

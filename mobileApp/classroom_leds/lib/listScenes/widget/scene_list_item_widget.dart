@@ -1,7 +1,7 @@
-import 'package:classroom_leds/util/server_util.dart';
 import 'package:flutter/material.dart';
 import 'package:classroom_leds/model/scene.dart';
-import 'package:classroom_leds/util/navigation_util.dart';
+import 'package:classroom_leds/listScenes/util/server_util.dart';
+import 'package:classroom_leds/listScenes/util/navigation_util.dart';
 
 class SceneListItemWidget extends StatefulWidget {
   final Scene scene;

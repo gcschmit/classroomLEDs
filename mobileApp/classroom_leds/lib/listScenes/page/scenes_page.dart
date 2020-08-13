@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:classroom_leds/model/scene.dart';
-import 'package:classroom_leds/util/navigation_util.dart';
-import 'package:classroom_leds/util/server_util.dart';
-import 'package:classroom_leds/widget/scene_list_widget.dart';
+import 'package:classroom_leds/listScenes/util/navigation_util.dart';
+import 'package:classroom_leds/listScenes/util/server_util.dart';
+import 'package:classroom_leds/listScenes/widget/scene_list_widget.dart';
 
 class ScenesPage extends StatefulWidget {
   @override

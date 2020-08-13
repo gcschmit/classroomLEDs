@@ -1,4 +1,4 @@
-import 'package:classroom_leds/page/scenes_page.dart';
+import 'package:classroom_leds/listScenes/page/scenes_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

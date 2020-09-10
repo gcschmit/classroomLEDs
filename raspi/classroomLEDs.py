@@ -54,7 +54,7 @@ while True:
     
     try:
         # eventually, update the URL to that for the server running on EC2
-        url = "http://192.168.1.139:3000/leds/1"
+        url = "http://localhost:3000/leds/1"
         response = requests.get(url = url)
         response.raise_for_status()
         
@@ -88,7 +88,7 @@ while True:
         print(sch_time)
         print(now)
         
-        if sch_time < now:
+        if sch_date < date_now and sch_time < now:
             # the color can be specified as a tuple with 4 elements: (R, G, B, brightness)
             led_color = tuple(int(scene["color"][i:i+2], 16) for i in (2, 4, 6))
             print(led_color)

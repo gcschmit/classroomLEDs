@@ -1,0 +1,13 @@
+<html>
+    <head>
+        {% if title %} 
+        <title>{{ title }} - WebApp</title>
+        {% else %} <!-- if title variable is not provided -->
+        <title>ClassroomLEDs WebApp</title>
+        {% endif %}
+    </head>
+    <body> <!-- Content on the page -->
+        <div>WebApp: <a href="/index">Home</a></div>
+        {% block content %}{% endblock %} <!-- Gets block content from index.html -->
+    </body>
+</html>

@@ -7,7 +7,20 @@
         {% endif %}
     </head>
     <body> <!-- Content on the page -->
-        <div>WebApp: <a href="/index">Home</a></div>
+        <div>
+            WebApp: 
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %} <!-- Gets block content from index.html -->
     </body>
 </html>

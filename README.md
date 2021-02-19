@@ -1,9 +1,10 @@
 # classroomLEDs
 
-There are three components that comprise this project:
+There are four components that comprise this project:
 
 * raspi: A python script that reads the schedule of scenes from the server and controls the LEDs.
 * server: A node.js server that publishes a CRUD API.
+* webApp: A flask app that hosts users, profiles, and the ability to schedule and override scenes.
 * mobileApp: A flutter app that displays the scenes and supports editing the scenes.
 
 
@@ -118,6 +119,22 @@ All of the scenes of a specific LED strip, can be retrieved with a GET request t
 Each scene has an ID, a time (stored as an ISO 8601 string where the date is ignored at the moment), a color (stored as an 8-digit hex string: alpha, red, green, blue), a brightness (stored as a floating point value between 0 and 1), and a mode (stored as a string; currently "solid" and "pulse" are supported). The attributes of a specific scene, can be retrieved with a GET request to /leds/*ledID*/scenes/*sceneID*. A specific scene can be updated with a PUT request or deleted with DELETE request.
 
 The main thread in the script gets the scenes for the LED strip with ID 1 every 60 seconds. The most recent scene whose time has passed determines the state of the LEDs. The LEDs are updated in a separate thread every 10 milliseconds to support the pulse mode.
+
+
+## webApp
+
+### installation
+
+* Install python
+* Create the virtual environment: `python3 -m venv venv`
+* Run the virtual environment: `source venv/bin/activate`
+* Install flask: `pip install flask`
+
+On startup every time:
+
+* Go to the webApp directory
+* Start the virtual environment: `source venv/bin/activate`
+* Set the FLASK_APP environment variable: `export FLASK_APP=webApp.py`
 
 
 ## mobileApp

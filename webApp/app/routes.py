@@ -21,7 +21,7 @@ def index():
     posts = [
         {
             'author': {'username': 'John'},
-            'body': 'Beautiful day in Paris!'
+            'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'
         },
         {
             'author': {'username': 'Susan'},
@@ -71,15 +71,15 @@ def register():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
-        {'author': user, 'body': 'Test post #1'}, #Customizable
-        {'author': user, 'body': 'Test post #2'}
+        {'author': user, 'body': 'I\'m overriding the current color, brightness, and pattern of the LEDs!'}, #Customizable
+        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
     ]
     return render_template('user.html', user=user, posts=posts)
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = EditProfileForm()
+    form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data

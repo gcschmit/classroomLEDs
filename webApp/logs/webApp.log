@@ -53,3 +53,9 @@ Traceback (most recent call last):
 werkzeug.routing.BuildError: Could not build url for endpoint 'reset_password_request'. Did you mean 'edit_profile' instead?
 2021-03-16 21:17:03,019 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
 2021-03-16 21:21:44,713 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-17 10:10:46,021 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-17 10:23:13,451 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-17 10:27:07,222 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-17 10:31:44,055 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-17 10:50:09,532 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-17 10:50:56,167 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

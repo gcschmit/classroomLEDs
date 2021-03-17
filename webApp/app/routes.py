@@ -5,7 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from app.models import User
-
+import requests
 
 @app.before_request
 def before_request():
@@ -18,10 +18,28 @@ def before_request():
 @app.route('/index')
 @login_required
 def index():
+    URL = "http://localhost:3000/leds/1"
+
+    r = requests.get(url = URL)
+
+    data = r.json()
+
+
+    URL_post = "http://localhost:3000/leds/1/scenes/56"
+
+    data_post = {
+            "id": 56,
+            "time":"2020-10-19T13:30:00.000",
+            "color":"ffff0000",
+            "brightness": 1.0,
+            "mode":"pulse"}
+
+    r = requests.put(url = URL_post, data = data_post)
+
     posts = [
         {
             'author': {'username': 'John'},
-            'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'
+            'body': str(data)
         },
         {
             'author': {'username': 'Susan'},

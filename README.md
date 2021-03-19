@@ -136,6 +136,14 @@ On startup every time:
 * Start the virtual environment: `source venv/bin/activate`
 * Set the FLASK_APP environment variable: `export FLASK_APP=webApp.py`
 
+Create raspi server in a separate terminal:
+* Go to server directory
+* `node app.js`
+* `http://<ip address>/leds`
+
+After installing anything new, update requirements.txt
+* `pip freeze > requirements.txt`
+
 
 ## mobileApp
 

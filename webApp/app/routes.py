@@ -25,7 +25,7 @@ def index():
     data = r.json()
 
 
-    URL_post = "http://localhost:3000/leds/1/scenes/56"
+    URL_post = "http://localhost:3000/leds/1/scenes/56" #post is create and put is update
 
     data_post = {
             "id": 56,

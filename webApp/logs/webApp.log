@@ -59,3 +59,4 @@ werkzeug.routing.BuildError: Could not build url for endpoint 'reset_password_re
 2021-03-17 10:31:44,055 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
 2021-03-17 10:50:09,532 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
 2021-03-17 10:50:56,167 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-19 09:50:40,740 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

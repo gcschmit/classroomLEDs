@@ -18,16 +18,19 @@ def before_request():
 @app.route('/index')
 @login_required
 def index():
-    URL = "http://localhost:3000/leds/1"
+    URL_get = "http://localhost:3000/leds/1"
 
-    r = requests.get(url = URL)
+    r = requests.get(url = URL_get)
 
     data = r.json()
 
+    #scenes = r["scenes"]
 
-    URL_post = "http://localhost:3000/leds/1/scenes/56" #post is create and put is update
+    URL_post = "http://localhost:3000/leds/1/scenes/56" #post is create a new scene and put is update the scene
 
-    data_post = {
+    #scenes without a specific scene number can be used to post, but if there is a scene it will update with put
+
+    data_post = {            
             "id": 56,
             "time":"2020-10-19T13:30:00.000",
             "color":"ffff0000",
@@ -43,7 +46,7 @@ def index():
         },
         {
             'author': {'username': 'Susan'},
-            'body': 'Classroom LEDs work!'
+            'body': ""
         }
     ]
     return render_template('index.html', title='Home', posts=posts)

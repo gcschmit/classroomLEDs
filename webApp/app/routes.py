@@ -6,6 +6,7 @@ from app import app, db #importing the app variable (right) defined in the app p
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
 from app.models import User
 import requests
+import json
 
 @app.before_request
 def before_request():
@@ -22,7 +23,11 @@ def index():
 
     r = requests.get(url = URL_get)
 
-    data = r.json()
+    data = r.json() #json object
+
+    data_dumps = json.dumps(data)
+
+    data_dict = json.loads(data_dumps)
 
     #scenes = r["scenes"]
 
@@ -37,16 +42,21 @@ def index():
             "brightness": 1.0,
             "mode":"pulse"}
 
+    post_dumps = json.dumps(data_post) #dump creates string object
+
+    post_dict = json.loads(post_dumps)
+
+
     r = requests.put(url = URL_post, data = data_post)
 
     posts = [
         {
             'author': {'username': 'John'},
-            'body': str(data)
+            'body': data_dict['scenes']
         },
         {
             'author': {'username': 'Susan'},
-            'body': ""
+            'body': "Time: " + post_dict['time']
         }
     ]
     return render_template('index.html', title='Home', posts=posts)

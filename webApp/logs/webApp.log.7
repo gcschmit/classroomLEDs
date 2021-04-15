@@ -1,4 +1,4 @@
-2021-03-16 21:03:28,371 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-03-16 21:01:40,635 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -42,11 +42,10 @@ Traceback (most recent call last):
     {% block app_content %}{% endblock %}
   File "/home/whzheng/classroomLEDs/webApp/app/templates/index.html", line 11, in block "app_content"
     {% include '_post.html' %}
-  File "/home/whzheng/classroomLEDs/webApp/app/templates/_post.html", line 3, in top-level template code
-    <td><img src="{{ post.author.avatar(36) }}"></td>
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/_post.html", line 4, in top-level template code
+    <img src="{{ post.author.avatar(70) }}" />
 jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'avatar'
-2021-03-16 21:06:33,826 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-03-16 21:06:35,662 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-03-16 21:01:43,516 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -90,7 +89,7 @@ Traceback (most recent call last):
     {% block app_content %}{% endblock %}
   File "/home/whzheng/classroomLEDs/webApp/app/templates/index.html", line 11, in block "app_content"
     {% include '_post.html' %}
-  File "/home/whzheng/classroomLEDs/webApp/app/templates/_post.html", line 3, in top-level template code
-    <td><img src="{{ post.author.avatar(36) }}"></td>
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/_post.html", line 4, in top-level template code
+    <img src="{{ post.author.avatar(70) }}" />
 jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'avatar'
-2021-03-16 21:12:13,150 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-03-16 21:03:26,357 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

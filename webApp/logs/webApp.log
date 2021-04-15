@@ -1,4 +1,4 @@
-2021-04-12 10:30:28,820 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-04-15 10:11:54,306 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,10 +14,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 49, in index
-    'body': str(scenes)
-NameError: name 'scenes' is not defined
-2021-04-12 10:30:37,574 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
+    'body': data_dict['id', 'scenes']
+KeyError: ('id', 'scenes')
+2021-04-15 10:13:38,001 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-15 10:13:40,317 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -33,8 +34,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 49, in index
-    'body':
-NameError: name 'scenes' is not defined
-2021-04-12 10:30:43,590 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-12 10:31:21,693 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
+    'body': data_dict[key]
+NameError: name 'key' is not defined
+2021-04-15 10:14:10,371 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-15 10:25:53,521 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

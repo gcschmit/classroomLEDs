@@ -36,27 +36,43 @@ def index():
     #scenes without a specific scene number can be used to post, but if there is a scene it will update with put
 
     data_post = {            
-            "id": 56,
-            "time":"2020-10-19T13:30:00.000",
-            "color":"ffff0000",
-            "brightness": 1.0,
-            "mode":"pulse"}
+        "id": 56,
+        "time":"2020-10-19T13:30:00.000",
+        "color":"ffff0000",
+        "brightness": 1.0,
+        "mode":"pulse"}}
 
     post_dumps = json.dumps(data_post) #dump creates string object
 
     post_dict = json.loads(post_dumps)
 
 
-    r = requests.put(url = URL_post, data = data_post)
+    r = requests.put(URL_post, data = data_post)
 
     posts = [
         {
             'author': {'username': 'John'},
-            'body': data_dict['scenes']
+            'body': "ID: " + str(data_dict.get('scenes')[0]['id'])
         },
         {
             'author': {'username': 'Susan'},
-            'body': "Time: " + post_dict['time']
+            'body': "Time: " + data_dict.get('scenes')[0]['time']
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': "Color: " + data_dict.get('scenes')[0]['color']
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': "Brightness: " + str(data_dict.get('scenes')[0]['brightness'])
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': "Mode: " + data_dict.get('scenes')[0]['mode']
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': str(r.text)
         }
     ]
     return render_template('index.html', title='Home', posts=posts)

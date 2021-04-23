@@ -29,25 +29,39 @@ def index():
 
     data_dict = json.loads(data_dumps)
 
-    #scenes = r["scenes"]
-
-    URL_post = "http://localhost:3000/leds/1/scenes/56" #post is create a new scene and put is update the scene
+    #post is create a new scene and put is update the scene
 
     #scenes without a specific scene number can be used to post, but if there is a scene it will update with put
 
-    data_post = {            
-        "id": 56,
+    URL_put = "http://localhost:3000/leds/1/scenes/58" 
+
+    data_put = {            
+        "id": 22,
         "time":"2020-10-19T13:30:00.000",
         "color":"ffff0000",
         "brightness": 1.0,
-        "mode":"pulse"}}
+        "mode":"solid"}
 
-    post_dumps = json.dumps(data_post) #dump creates string object
+    put_dumps = json.dumps(data_put) #dump creates string object
 
-    post_dict = json.loads(post_dumps)
+    put_dict = json.loads(put_dumps)
 
+    r1 = requests.put(URL_put, json = data_put)
 
-    r = requests.put(URL_post, data = data_post)
+    URL_post = "http://localhost:3000/leds/1/scenes"
+
+    data_post = {
+        "id": 90,
+        "time":"2020-10-19T13:30:00.000",
+        "color":"ffffff00",
+        "brightness": 1.0,
+        "mode":"pulse"}
+
+    post_dumps = json.dumps(data_post)
+
+    post_dict = json.loads(put_dumps)
+
+    r2 = requests.post(URL_post, json = data_post)
 
     posts = [
         {
@@ -72,7 +86,7 @@ def index():
         },
         {
             'author': {'username': 'Susan'},
-            'body': str(r.text)
+            'body': r1.text
         }
     ]
     return render_template('index.html', title='Home', posts=posts)

@@ -33,13 +33,13 @@ def index():
 
     #scenes without a specific scene number can be used to post, but if there is a scene it will update with put
 
-    URL_put = "http://localhost:3000/leds/1/scenes/58" 
+    URL_put = "http://localhost:3000/leds/1/scenes/60" 
 
     data_put = {            
         "id": 22,
         "time":"2020-10-19T13:30:00.000",
-        "color":"ffff0000",
-        "brightness": 1.0,
+        "color":"ff000000",
+        "brightness": 2.0,
         "mode":"solid"}
 
     put_dumps = json.dumps(data_put) #dump creates string object
@@ -48,20 +48,20 @@ def index():
 
     r1 = requests.put(URL_put, json = data_put)
 
-    URL_post = "http://localhost:3000/leds/1/scenes"
+#    URL_post = "http://localhost:3000/leds/1/scenes"
+#
+#    data_post = {
+#        "id": 90,
+#        "time":"2020-10-19T13:30:00.000",
+#        "color":"ffffff00",
+#        "brightness": 1.0,
+#        "mode":"pulse"}
 
-    data_post = {
-        "id": 90,
-        "time":"2020-10-19T13:30:00.000",
-        "color":"ffffff00",
-        "brightness": 1.0,
-        "mode":"pulse"}
+#    post_dumps = json.dumps(data_post)
 
-    post_dumps = json.dumps(data_post)
+#    post_dict = json.loads(put_dumps)
 
-    post_dict = json.loads(put_dumps)
-
-    r2 = requests.post(URL_post, json = data_post)
+ #   r2 = requests.post(URL_post, json = data_post)
 
     posts = [
         {
@@ -151,3 +151,19 @@ def edit_profile():
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+@app.route('/override', methods=['GET', 'POST'])
+@login_required
+def override():
+    #form = EditProfileForm(current_user.username)
+    #if form.validate_on_submit():
+    #    current_user.username = form.username.data
+    #    current_user.about_me = form.about_me.data
+    #    db.session.commit()
+    #    flash('Your changes have been saved.')
+    #    return redirect(url_for('edit_profile'))
+    #elif request.method == 'GET':
+    #    form.username.data = current_user.username
+    #    form.about_me.data = current_user.about_me
+    #return render_template('edit_profile.html', title='Edit Profile', form=form)
+    return redirect(url_for('edit_profile'))

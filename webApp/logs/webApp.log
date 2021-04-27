@@ -1,4 +1,4 @@
-2021-04-22 21:53:29,142 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-04-27 09:46:42,104 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,14 +14,104 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 75, in index
-    'body': str(r).txt
-AttributeError: 'str' object has no attribute 'txt'
-2021-04-22 21:54:43,328 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-22 21:56:03,635 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-22 21:59:26,460 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-22 22:10:23,060 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-22 22:11:37,176 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-22 22:12:54,734 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-22 22:13:37,644 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-23 10:08:11,515 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 92, in index
+    return render_template('index.html', title='Home', posts=posts)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/base.html", line 47, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/index.html", line 10, in block "app_content"
+    <p><a href="{{ url_for('override') }}">Override Existing LEDs</a></p>
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'override'. Did you mean 'index' instead?
+2021-04-27 09:47:15,767 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-27 09:47:35,491 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-27 09:47:37,000 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 92, in index
+    return render_template('index.html', title='Home', posts=posts)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/base.html", line 47, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/home/whzheng/classroomLEDs/webApp/app/templates/index.html", line 10, in block "app_content"
+    <p><a href="{{ url_for('override') }}">Override Existing LEDs</a></p>
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2216, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 2179, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'override'. Did you mean 'index' instead?
+2021-04-27 09:48:34,693 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-27 09:49:30,620 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-27 09:50:06,083 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-27 09:50:24,538 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-27 09:50:48,185 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

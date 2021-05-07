@@ -1,4 +1,6 @@
-2021-04-15 10:11:54,306 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-04-19 11:42:13,886 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-19 11:42:37,651 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-19 11:42:39,765 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,55 +16,17 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
-    'body': data_dict['id', 'scenes']
-KeyError: ('id', 'scenes')
-2021-04-15 10:13:38,001 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-15 10:13:40,317 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
-Traceback (most recent call last):
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
-    'body': data_dict[key]
-NameError: name 'key' is not defined
-2021-04-15 10:14:10,371 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-15 10:25:53,521 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 09:44:06,925 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:03:51,774 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:03:56,479 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
-Traceback (most recent call last):
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 59, in index
-    'body': "ID: " + post_dict['id']
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 75, in index
+    'body': "Mode: " + post_dict['id']
 TypeError: can only concatenate str (not "int") to str
-2021-04-19 10:07:44,494 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:21:22,367 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:21:24,491 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-04-19 11:42:59,341 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-19 11:44:13,641 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 09:26:44,329 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 09:28:16,153 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 09:53:35,928 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 09:56:13,825 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 09:56:55,098 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 09:56:57,569 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -78,13 +42,26 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
-    'body': data_dict[1]
-KeyError: 1
-2021-04-19 10:22:12,224 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:23:02,723 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:23:19,420 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 10:23:20,383 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 47, in index
+    r = requxests.put(url = URL_post, data = data_post)
+NameError: name 'requxests' is not defined
+2021-04-21 09:57:11,122 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:05:09,203 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:07:11,620 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:07:58,946 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:09:51,711 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:10:36,288 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:11:16,882 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:18:19,374 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:18:54,940 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:19:57,842 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:20:53,525 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-21 10:25:57,207 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:42:36,854 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:42:51,434 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:51:23,692 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:52:40,656 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:52:42,482 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -100,13 +77,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
-    'body': data_dict.get('scenes').get('id')
-AttributeError: 'list' object has no attribute 'get'
-2021-04-19 10:24:30,013 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 11:39:40,378 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 11:40:15,102 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-04-19 11:40:17,012 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 75, in index
+    'body': r['mode']
+TypeError: 'Response' object is not subscriptable
+2021-04-22 21:53:03,551 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:53:04,898 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -122,7 +97,27 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 55, in index
-    'body': "ID: " + data_dict.get('scenes')[0]['id']
-TypeError: can only concatenate str (not "int") to str
-2021-04-19 11:40:27,787 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 75, in index
+    'body': r.txt
+AttributeError: 'Response' object has no attribute 'txt'
+2021-04-22 21:53:17,540 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-04-22 21:53:18,547 ERROR: Exception on / [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 75, in index
+    'body': str(r.txt)
+AttributeError: 'Response' object has no attribute 'txt'
+2021-04-22 21:53:27,984 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

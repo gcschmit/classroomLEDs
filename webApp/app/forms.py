@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField, IntegerField, DateTimeField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 
@@ -41,3 +41,15 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+class Override(FlaskForm):
+    id = IntegerField('ID', validators=[DataRequired()])
+    color = StringField('Color', validators=[DataRequired()])
+    brightness = IntegerField('Brightness', validators=[DataRequired()])
+    mode = StringField('Mode', validators=[DataRequired()])
+    time = DateTimeField('Time',validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    def __init__(self, original_username, *args, **kwargs):
+        super(Override, self).__init__(*args, **kwargs)
+        self.original_username = original_username

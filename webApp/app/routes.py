@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override
 from app.models import User
 import requests
 import json
@@ -155,6 +155,7 @@ def edit_profile():
 @app.route('/override', methods=['GET', 'POST'])
 @login_required
 def override():
+    form = Override(current_user.username)
     #form = EditProfileForm(current_user.username)
     #if form.validate_on_submit():
     #    current_user.username = form.username.data
@@ -166,4 +167,4 @@ def override():
     #    form.username.data = current_user.username
     #    form.about_me.data = current_user.about_me
     #return render_template('edit_profile.html', title='Edit Profile', form=form)
-    return redirect(url_for('edit_profile'))
+    return render_template('override.html', title='Override', form=form)

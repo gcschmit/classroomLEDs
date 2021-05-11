@@ -47,7 +47,7 @@ class Override(FlaskForm):
     color = StringField('Color', validators=[DataRequired()])
     brightness = IntegerField('Brightness', validators=[DataRequired()])
     mode = StringField('Mode', validators=[DataRequired()])
-    time = DateTimeField('Time',validators=[DataRequired()])
+    time = StringField('Time',validators=[DataRequired()])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):

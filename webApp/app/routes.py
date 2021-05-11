@@ -47,21 +47,25 @@ def index():
     put_dict = json.loads(put_dumps)
 
     r1 = requests.put(URL_put, json = data_put)
-
+#---Post Info Below---
 #    URL_post = "http://localhost:3000/leds/1/scenes"
-#
+
+#    test1 = 1
+#    test2 = 2
+#    testtime = "2020-10-19 13:30:00"
+
 #    data_post = {
-#        "id": 90,
-#        "time":"2020-10-19T13:30:00.000",
-#        "color":"ffffff00",
-#        "brightness": 1.0,
-#        "mode":"pulse"}
+        # id doesn't matter "id": 90,
+#        "time": testtime,
+#        "color": test2,
+#        "brightness": test1,
+#        "mode": test2}
 
 #    post_dumps = json.dumps(data_post)
 
-#    post_dict = json.loads(put_dumps)
+#    post_dict = json.loads(post_dumps)
 
- #   r2 = requests.post(URL_post, json = data_post)
+#    r2 = requests.post(URL_post, json = data_post)
 
     posts = [
         {
@@ -156,15 +160,26 @@ def edit_profile():
 @login_required
 def override():
     form = Override(current_user.username)
-    #form = EditProfileForm(current_user.username)
-    #if form.validate_on_submit():
-    #    current_user.username = form.username.data
-    #    current_user.about_me = form.about_me.data
-    #    db.session.commit()
-    #    flash('Your changes have been saved.')
-    #    return redirect(url_for('edit_profile'))
-    #elif request.method == 'GET':
-    #    form.username.data = current_user.username
-    #    form.about_me.data = current_user.about_me
-    #return render_template('edit_profile.html', title='Edit Profile', form=form)
+    if form.validate_on_submit():
+        URL_post = "http://localhost:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        time = form.time.data
+
+        data_post = {
+            # id doesn't matter "id": 90,
+            "time": time,
+            "color": color,
+            "brightness": brightness,
+            "mode": mode}
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
     return render_template('override.html', title='Override', form=form)

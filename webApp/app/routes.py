@@ -48,24 +48,25 @@ def index():
 
     r1 = requests.put(URL_put, json = data_put)
 #---Post Info Below---
-#    URL_post = "http://localhost:3000/leds/1/scenes"
+    URL_post = "http://localhost:3000/leds/1/scenes"
 
-#    test1 = 1
-#    test2 = 2
-#    testtime = "2020-10-19 13:30:00"
+    test1 = 1
+    test2 = 2
+    testtime = "2020-10-19 13:30:00"
 
-#    data_post = {
+    data_post = {
         # id doesn't matter "id": 90,
-#        "time": testtime,
-#        "color": test2,
-#        "brightness": test1,
-#        "mode": test2}
+        "color": test2,
+        "brightness": test1,
+        "mode": test2,
+        "day_of_week": "Monday",
+        "start_time": testtime}
 
-#    post_dumps = json.dumps(data_post)
+    post_dumps = json.dumps(data_post)
 
-#    post_dict = json.loads(post_dumps)
+    post_dict = json.loads(post_dumps)
 
-#    r2 = requests.post(URL_post, json = data_post)
+    r2 = requests.post(URL_post, json = data_post)
 
     posts = [
         {
@@ -170,10 +171,10 @@ def override():
 
         data_post = {
             # id doesn't matter "id": 90,
-            "time": time,
             "color": color,
             "brightness": brightness,
-            "mode": mode}
+            "mode": mode,
+            "time": time}
 
         post_dumps = json.dumps(data_post)
         post_dict = json.loads(post_dumps)

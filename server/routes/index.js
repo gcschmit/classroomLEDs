@@ -90,13 +90,9 @@ const createScene = (req, res, next) => {
       throw err;
     }
     newID = Math.max.apply(Math, led.scenes.map(o => { return o.id; })) + 1;
-    const newScene = {}; //I believe this is where the error occurs.
-    //if I don't initialize the const and just do const newScene; then when I run "node app.js"
-    //there is a missing initializer in const error. That's why I made it empty {}.
-    //But now there is a TypeError when trying to assign to a constant variable.
     if(req.body.hasOwnProperty("day_of_week"))
       {
-        newScene = {
+        var newScene = {
           id: newID,
           color: req.body.color,
           brightness: req.body.brightness,
@@ -107,7 +103,7 @@ const createScene = (req, res, next) => {
       }
     else if(req.body.hasOwnProperty("date"))
       {
-        newScene = {
+        var newScene = {
           id: newID,
           color: req.body.color,
           brightness: req.body.brightness,
@@ -118,7 +114,7 @@ const createScene = (req, res, next) => {
       }
     else if(req.body.hasOwnProperty("override_duration"))
       {
-        newScene = {
+        var newScene = {
           id: newID,
           color: req.body.color,
           brightness: req.body.brightness,

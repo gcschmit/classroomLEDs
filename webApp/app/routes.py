@@ -48,25 +48,25 @@ def index():
 
     r1 = requests.put(URL_put, json = data_put)
 #---Post Info Below---
-    URL_post = "http://localhost:3000/leds/1/scenes"
+#    URL_post = "http://localhost:3000/leds/1/scenes"
 
-    test1 = 1
-    test2 = 2
-    testtime = "2020-10-19 13:30:00"
+#    test1 = 1
+#    test2 = 2
+#    testtime = "2020-10-19 13:30:00"
 
-    data_post = {
+#    data_post = {
         # id doesn't matter "id": 90,
-        "color": test2,
-        "brightness": test1,
-        "mode": test2,
-        "day_of_week": "Monday",
-        "start_time": testtime}
+#        "color": test2,
+#        "brightness": test1,
+#        "mode": test2,
+#        "day_of_week": "Monday",
+#        "start_time": testtime}
 
-    post_dumps = json.dumps(data_post)
+#    post_dumps = json.dumps(data_post)
 
-    post_dict = json.loads(post_dumps)
+#    post_dict = json.loads(post_dumps)
 
-    r2 = requests.post(URL_post, json = data_post)
+#    r2 = requests.post(URL_post, json = data_post)
 
     posts = [
         {
@@ -167,14 +167,38 @@ def override():
         color = form.color.data
         brightness = form.brightness.data
         mode = form.mode.data
-        time = form.time.data
 
-        data_post = {
-            # id doesn't matter "id": 90,
-            "color": color,
-            "brightness": brightness,
-            "mode": mode,
-            "time": time}
+        day_of_week = form.day_of_week.data
+        date = form.date.data
+        override_duration = form.override_duration.data
+
+        start_time = form.start_time.data
+
+        if (day_of_week != ""):
+            data_post = {
+                # id doesn't matter "id": 90,
+                "color": color,
+                "brightness": brightness,
+                "mode": mode,
+                "day_of_week": day_of_week,
+                "start_time": start_time}
+        elif (date != ""):
+            data_post = {
+                # id doesn't matter "id": 90,
+                "color": color,
+                "brightness": brightness,
+                "mode": mode,
+                "date": date,
+                "start_time": start_time}             
+        elif (override_duration != -1):
+            data_post = {
+                # id doesn't matter "id": 90,
+                "color": color,
+                "brightness": brightness,
+                "mode": mode,
+                "override_duration": override_duration,
+                "start_time": start_time}        
+        
 
         post_dumps = json.dumps(data_post)
         post_dict = json.loads(post_dumps)

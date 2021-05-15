@@ -7,8 +7,11 @@
     {{ wtf.quick_form(form) }}
     <br>
     {% endif %}
-    <p><a href="{{ url_for('override') }}">Override Existing LEDs</a></p>
+    <br>
     {% for post in posts %}
+        <p><a href="{{ url_for('override') }}">Override Existing LEDs</a></p>
         {% include '_post.html' %}
+        <br>
+        <br>
     {% endfor %}
 {% endblock %}

@@ -7,6 +7,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override
 from app.models import User
 import requests
 import json
+#from decimal import Decimal
 
 @app.before_request
 def before_request():
@@ -70,30 +71,45 @@ def index():
 
     posts = [
         {
-            'author': {'username': 'John'},
-            'body': "ID: " + str(data_dict.get('scenes')[0]['id'])
+            'author': {'username': 'Bill'},
+            'body': "Day of the Week: Specify a day of the week (monday, tuesday, wednesday, \
+                thursday, friday, saturday, sunday) in order to create an override for that \
+                day of the week."
         },
         {
-            'author': {'username': 'Susan'},
-            'body': "Time: " + data_dict.get('scenes')[0]['time']
+            'author': {'username': 'Bill'},
+            'body': "Date: Specify a date using ISO 8601 notation (\"YYYY-MM-DD\") in order \
+                to override the LEDs on that specific date."
         },
         {
-            'author': {'username': 'Susan'},
-            'body': "Color: " + data_dict.get('scenes')[0]['color']
-        },
+            'author': {'username': 'Bill'},
+            'body': "Override Duration: Override the LEDs right now for a specified amount \
+                of time in minutes."
+        }
+
+
+
+#        {
+#            'author': {'username': 'Bill'},
+#            'body': "ID: " + str(data_dict.get('scenes')[0]['id'])
+#        },
+#        {
+#            'author': {'username': 'Bill'},
+#            'body': "Time: " + data_dict.get('scenes')[0]['time']
+#        }
+#        {
+#            'author': {'username': 'Bill'},
+#            'body': r1.text
+#        }
+    ]
+
+    posts1 = [
         {
-            'author': {'username': 'Susan'},
-            'body': "Brightness: " + str(data_dict.get('scenes')[0]['brightness'])
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': "Mode: " + data_dict.get('scenes')[0]['mode']
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': r1.text
+            'author': {'username': 'Bill'},
+            'body': "Test"
         }
     ]
+
     return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -137,8 +153,8 @@ def register():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
-        {'author': user, 'body': 'I\'m overriding the current color, brightness, and pattern of the LEDs!'}, #Customizable
-        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
+#        {'author': user, 'body': 'I\'m overriding the current color, brightness, and pattern of the LEDs!'}, #Customizable
+#        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
     ]
     return render_template('user.html', user=user, posts=posts)
 

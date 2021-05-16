@@ -193,27 +193,27 @@ def override():
         if (day_of_week != ""):
             data_post = {
                 # id doesn't matter "id": 90,
-                "color": color,
+                "color": "ff" + color,
                 "brightness": brightness,
                 "mode": mode,
                 "day_of_week": day_of_week,
-                "start_time": start_time}
+                "start_time": "1900-01-01T" + start_time + ":00.000"}
         elif (date != ""):
             data_post = {
                 # id doesn't matter "id": 90,
-                "color": color,
+                "color": "ff" + color,
                 "brightness": brightness,
                 "mode": mode,
                 "date": date,
-                "start_time": start_time}             
+                "start_time": "1900-01-01T" + start_time + ":00.000"}             
         elif (override_duration != -1):
             data_post = {
                 # id doesn't matter "id": 90,
-                "color": color,
+                "color": "ff" + color,
                 "brightness": brightness,
                 "mode": mode,
                 "override_duration": override_duration,
-                "start_time": start_time}        
+                "start_time": "1900-01-01T" + start_time + ":00.000"}        
         
 
         post_dumps = json.dumps(data_post)

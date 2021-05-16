@@ -49,7 +49,7 @@ class Override(FlaskForm):
     day_of_week = StringField('Day of the Week', render_kw={'placeholder': '"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", or "sunday"'})
     date = StringField('Date', render_kw={'placeholder': 'Valid Format is "YYYY-MM-DD"'})
     override_duration = IntegerField('Override Duration', render_kw={'placeholder': 'Number of minutes'})
-    start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "YYYY-MM-DD"'}, validators=[DataRequired()])
+    start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):

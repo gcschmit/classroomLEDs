@@ -3,10 +3,11 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek
 from app.models import User
 import requests
 import json
+#from decimal import Decimal
 
 @app.before_request
 def before_request():
@@ -47,49 +48,67 @@ def index():
     put_dict = json.loads(put_dumps)
 
     r1 = requests.put(URL_put, json = data_put)
-
+#---Post Info Below---
 #    URL_post = "http://localhost:3000/leds/1/scenes"
-#
+
+#    test1 = 1
+#    test2 = 2
+#    testtime = "2020-10-19 13:30:00"
+
 #    data_post = {
-#        "id": 90,
-#        "time":"2020-10-19T13:30:00.000",
-#        "color":"ffffff00",
-#        "brightness": 1.0,
-#        "mode":"pulse"}
+        # id doesn't matter "id": 90,
+#        "color": test2,
+#        "brightness": test1,
+#        "mode": test2,
+#        "day_of_week": "Monday",
+#        "start_time": testtime}
 
 #    post_dumps = json.dumps(data_post)
 
-#    post_dict = json.loads(put_dumps)
+#    post_dict = json.loads(post_dumps)
 
- #   r2 = requests.post(URL_post, json = data_post)
+#    r2 = requests.post(URL_post, json = data_post)
 
-    posts = [
+#        {
+#            'author': {'username': 'Bill'},
+#            'body': "ID: " + str(data_dict.get('scenes')[0]['id'])
+#        },
+#        {
+#            'author': {'username': 'Bill'},
+#            'body': "Time: " + data_dict.get('scenes')[0]['time']
+#        }
+#        {
+#            'author': {'username': 'Bill'},
+#            'body': r1.text
+#        }
+
+
+    posts1 = [
         {
-            'author': {'username': 'John'},
-            'body': "ID: " + str(data_dict.get('scenes')[0]['id'])
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': "Time: " + data_dict.get('scenes')[0]['time']
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': "Color: " + data_dict.get('scenes')[0]['color']
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': "Brightness: " + str(data_dict.get('scenes')[0]['brightness'])
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': "Mode: " + data_dict.get('scenes')[0]['mode']
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': r1.text
+            'author': {'username': 'Bill'},
+            'body': "Day of Week: Specify a day of the week (monday, tuesday, wednesday, \
+                thursday, friday, saturday, sunday) in order to create an override for that \
+                day of the week."
         }
     ]
-    return render_template('index.html', title='Home', posts=posts)
+    
+    posts2 = [
+        {
+            'author': {'username': 'Bill'},
+            'body': "Date: Specify a date using ISO 8601 notation (\"YYYY-MM-DD\") in order \
+                to override the LEDs on that specific date."
+        }
+    ]
+
+    posts3 = [
+        {
+            'author': {'username': 'Bill'},
+            'body': "Override Duration: Override the LEDs right now for a specified amount \
+                of time in minutes."
+        }
+    ]
+
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 
@@ -132,8 +151,8 @@ def register():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
-        {'author': user, 'body': 'I\'m overriding the current color, brightness, and pattern of the LEDs!'}, #Customizable
-        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
+#        {'author': user, 'body': 'I\'m overriding the current color, brightness, and pattern of the LEDs!'}, #Customizable
+#        {'author': user, 'body': 'I\'m scheduling the color, brightness, and pattern of the LEDs!'}
     ]
     return render_template('user.html', user=user, posts=posts)
 
@@ -156,15 +175,85 @@ def edit_profile():
 @login_required
 def override():
     form = Override(current_user.username)
-    #form = EditProfileForm(current_user.username)
-    #if form.validate_on_submit():
-    #    current_user.username = form.username.data
-    #    current_user.about_me = form.about_me.data
-    #    db.session.commit()
-    #    flash('Your changes have been saved.')
-    #    return redirect(url_for('edit_profile'))
-    #elif request.method == 'GET':
-    #    form.username.data = current_user.username
-    #    form.about_me.data = current_user.about_me
-    #return render_template('edit_profile.html', title='Edit Profile', form=form)
+    if form.validate_on_submit():
+        URL_post = "http://localhost:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        override_duration = form.override_duration.data
+        start_time = form.start_time.data
+
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "override_duration": override_duration,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}        
+        
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
     return render_template('override.html', title='Override', form=form)
+
+@app.route('/date', methods=['GET', 'POST'])
+@login_required
+def date():
+    form = Date(current_user.username)
+    if form.validate_on_submit():
+        URL_post = "http://localhost:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        date = form.date.data
+        start_time = form.start_time.data
+
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "date": date + "T00:00:00.000",
+            "start_time": "1900-01-01T" + start_time + ":00.000"}             
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    return render_template('date.html', title='Date', form=form)
+
+@app.route('/dayofweek', methods=['GET', 'POST'])
+@login_required
+def dayofweek():
+    form = DayOfWeek(current_user.username)
+    if form.validate_on_submit():
+        URL_post = "http://localhost:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        day_of_week = form.day_of_week.data
+        start_time = form.start_time.data
+
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "day_of_week": day_of_week,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    return render_template('dayofweek.html', title='Day of Week', form=form)

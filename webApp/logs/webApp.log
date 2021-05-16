@@ -1,4 +1,5 @@
-2021-05-05 10:25:56,312 ERROR: Exception on /override [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+2021-05-16 11:13:25,489 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:13:30,505 ERROR: Exception on /date [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,11 +15,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 158, in override
-    form = Override()
-NameError: name 'Override' is not defined
-2021-05-07 09:03:58,985 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-07 09:04:13,784 ERROR: Exception on /override [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 228, in date
+    form = Date(current_user.username)
+NameError: name 'Date' is not defined
+2021-05-16 11:14:04,548 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:14:12,651 ERROR: Exception on /date [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
 Traceback (most recent call last):
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -34,9 +35,46 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 158, in override
-    form = Override(current_user.username)
-NameError: name 'Override' is not defined
-2021-05-07 09:05:07,202 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-07 09:06:12,810 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
-2021-05-07 09:06:56,089 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 228, in date
+    form = Date(current_user.username)
+NameError: name 'Date' is not defined
+2021-05-16 11:15:22,393 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:19:43,784 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:28:17,806 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:28:19,412 ERROR: Exception on /index [GET] [in /home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py:1892]
+Traceback (most recent call last):
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/whzheng/classroomLEDs/webApp/venv/lib/python3.7/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/whzheng/classroomLEDs/webApp/app/routes.py", line 113, in index
+    return render_template('index.html', title='Home', posts=posts)
+NameError: name 'posts' is not defined
+2021-05-16 11:28:41,122 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:31:10,371 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:32:22,802 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:33:08,218 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:35:10,073 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:37:15,595 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:37:56,830 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:38:28,696 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:38:57,967 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:40:02,124 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 11:40:44,688 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 13:54:41,333 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 13:56:14,705 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 13:57:50,101 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 14:09:14,215 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 14:57:24,315 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 14:59:21,158 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 15:09:02,638 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

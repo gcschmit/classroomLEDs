@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField, IntegerField, DateTimeField
+from wtforms import StringField, TextAreaField, PasswordField, BooleanField, SubmitField, IntegerField, DecimalField, DateTimeField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User
 
@@ -43,13 +43,37 @@ class EditProfileForm(FlaskForm):
                 raise ValidationError('Please use a different username.')
 
 class Override(FlaskForm):
-    id = IntegerField('ID', validators=[DataRequired()])
-    color = StringField('Color', validators=[DataRequired()])
-    brightness = IntegerField('Brightness', validators=[DataRequired()])
-    mode = StringField('Mode', validators=[DataRequired()])
-    time = DateTimeField('Time',validators=[DataRequired()])
+    color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
+    brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'}, validators=[DataRequired()])
+    mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
+    override_duration = IntegerField('Override Duration', render_kw={'placeholder': 'Number of minutes'})
+    start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
     submit = SubmitField('Submit')
 
     def __init__(self, original_username, *args, **kwargs):
         super(Override, self).__init__(*args, **kwargs)
+        self.original_username = original_username
+
+class Date(FlaskForm):
+    color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
+    brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'}, validators=[DataRequired()])
+    mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
+    date = StringField('Date', render_kw={'placeholder': 'Valid Format is "YYYY-MM-DD"'})
+    start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    def __init__(self, original_username, *args, **kwargs):
+        super(Date, self).__init__(*args, **kwargs)
+        self.original_username = original_username
+
+class DayOfWeek(FlaskForm):
+    color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
+    brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'}, validators=[DataRequired()])
+    mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
+    day_of_week = StringField('Day of the Week', render_kw={'placeholder': '"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", or "sunday"'})
+    start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    def __init__(self, original_username, *args, **kwargs):
+        super(DayOfWeek, self).__init__(*args, **kwargs)
         self.original_username = original_username

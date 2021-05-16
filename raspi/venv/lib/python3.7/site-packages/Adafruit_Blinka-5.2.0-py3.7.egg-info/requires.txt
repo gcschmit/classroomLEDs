@@ -1,0 +1,6 @@
+Adafruit-PlatformDetect>=2.11.1
+Adafruit-PureIO>=1.1.5
+pyftdi>=0.40.0
+
+[:platform_system != "Windows" and platform_machine != "mips"]
+sysv_ipc

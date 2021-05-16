@@ -217,7 +217,7 @@ def date():
             "color": "ff" + color,
             "brightness": brightness,
             "mode": mode,
-            "date": date,
+            "date": date + "T00:00:00.000",
             "start_time": "1900-01-01T" + start_time + ":00.000"}             
 
         post_dumps = json.dumps(data_post)

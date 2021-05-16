@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, url_for, request
 from werkzeug.urls import url_parse
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db #importing the app variable (right) defined in the app package (left)
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, Override, Date, DayOfWeek
 from app.models import User
 import requests
 import json
@@ -69,26 +69,6 @@ def index():
 
 #    r2 = requests.post(URL_post, json = data_post)
 
-    posts = [
-        {
-            'author': {'username': 'Bill'},
-            'body': "Day of the Week: Specify a day of the week (monday, tuesday, wednesday, \
-                thursday, friday, saturday, sunday) in order to create an override for that \
-                day of the week."
-        },
-        {
-            'author': {'username': 'Bill'},
-            'body': "Date: Specify a date using ISO 8601 notation (\"YYYY-MM-DD\") in order \
-                to override the LEDs on that specific date."
-        },
-        {
-            'author': {'username': 'Bill'},
-            'body': "Override Duration: Override the LEDs right now for a specified amount \
-                of time in minutes."
-        }
-
-
-
 #        {
 #            'author': {'username': 'Bill'},
 #            'body': "ID: " + str(data_dict.get('scenes')[0]['id'])
@@ -101,16 +81,34 @@ def index():
 #            'author': {'username': 'Bill'},
 #            'body': r1.text
 #        }
-    ]
+
 
     posts1 = [
         {
             'author': {'username': 'Bill'},
-            'body': "Test"
+            'body': "Day of Week: Specify a day of the week (monday, tuesday, wednesday, \
+                thursday, friday, saturday, sunday) in order to create an override for that \
+                day of the week."
+        }
+    ]
+    
+    posts2 = [
+        {
+            'author': {'username': 'Bill'},
+            'body': "Date: Specify a date using ISO 8601 notation (\"YYYY-MM-DD\") in order \
+                to override the LEDs on that specific date."
         }
     ]
 
-    return render_template('index.html', title='Home', posts=posts)
+    posts3 = [
+        {
+            'author': {'username': 'Bill'},
+            'body': "Override Duration: Override the LEDs right now for a specified amount \
+                of time in minutes."
+        }
+    ]
+
+    return render_template('index.html', title='Home', posts1=posts1, posts2 = posts2, posts3 = posts3)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login(): #Figure out which 
@@ -192,7 +190,6 @@ def override():
 
         if (day_of_week != ""):
             data_post = {
-                # id doesn't matter "id": 90,
                 "color": "ff" + color,
                 "brightness": brightness,
                 "mode": mode,
@@ -200,7 +197,6 @@ def override():
                 "start_time": "1900-01-01T" + start_time + ":00.000"}
         elif (date != ""):
             data_post = {
-                # id doesn't matter "id": 90,
                 "color": "ff" + color,
                 "brightness": brightness,
                 "mode": mode,
@@ -208,7 +204,6 @@ def override():
                 "start_time": "1900-01-01T" + start_time + ":00.000"}             
         elif (override_duration != -1):
             data_post = {
-                # id doesn't matter "id": 90,
                 "color": "ff" + color,
                 "brightness": brightness,
                 "mode": mode,
@@ -224,3 +219,61 @@ def override():
         flash('Your changes have been saved.')
         return redirect(url_for('index'))
     return render_template('override.html', title='Override', form=form)
+
+@app.route('/date', methods=['GET', 'POST'])
+@login_required
+def date():
+    form = Date(current_user.username)
+    if form.validate_on_submit():
+        URL_post = "http://localhost:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        date = form.date.data
+        start_time = form.start_time.data
+
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "date": date,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}             
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    return render_template('date.html', title='Date', form=form)
+
+@app.route('/dayofweek', methods=['GET', 'POST'])
+@login_required
+def dayofweek():
+    form = DayOfWeek(current_user.username)
+    if form.validate_on_submit():
+        URL_post = "http://localhost:3000/leds/1/scenes"
+
+        color = form.color.data
+        brightness = form.brightness.data
+        mode = form.mode.data
+        day_of_week = form.day_of_week.data
+        start_time = form.start_time.data
+
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "day_of_week": day_of_week,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}
+
+        post_dumps = json.dumps(data_post)
+        post_dict = json.loads(post_dumps)
+        r_post = requests.post(URL_post, json = data_post)
+
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('index'))
+    return render_template('dayofweek.html', title='Day of Week', form=form)

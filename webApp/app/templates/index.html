@@ -11,21 +11,21 @@
     <h3>Override Existing LEDs:</h3>
     <br>
     {% for post in posts1 %}
-        <a href="{{ url_for('override') }}">Override Duration</a> 
+        <p><a href="{{ url_for('dayofweek') }}">Override Day of Week</a></p>
         {% include '_post.html' %}
         <br>
         <br>
     {% endfor %}
     {% for post in posts2 %}
-    <p><a href="{{ url_for('date') }}">Override Date</a></p>
-    {% include '_post.html' %}
-    <br>
-    <br>
+        <p><a href="{{ url_for('date') }}">Override Date</a></p>
+        {% include '_post.html' %}
+        <br>
+        <br>
     {% endfor %}
     {% for post in posts3 %}
-    <p><a href="{{ url_for('dayofweek') }}">Override Day of Week</a></p>
-    {% include '_post.html' %}
-    <br>
-    <br>
+        <p><a href="{{ url_for('override') }}">Override Duration</a></p>
+        {% include '_post.html' %}
+        <br>
+        <br>
     {% endfor %}
 {% endblock %}

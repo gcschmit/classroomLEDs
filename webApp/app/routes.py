@@ -181,36 +181,16 @@ def override():
         color = form.color.data
         brightness = form.brightness.data
         mode = form.mode.data
-
-        day_of_week = form.day_of_week.data
-        date = form.date.data
         override_duration = form.override_duration.data
-
         start_time = form.start_time.data
 
-        if (day_of_week != ""):
-            data_post = {
-                "color": "ff" + color,
-                "brightness": brightness,
-                "mode": mode,
-                "day_of_week": day_of_week,
-                "start_time": "1900-01-01T" + start_time + ":00.000"}
-        elif (date != ""):
-            data_post = {
-                "color": "ff" + color,
-                "brightness": brightness,
-                "mode": mode,
-                "date": date,
-                "start_time": "1900-01-01T" + start_time + ":00.000"}             
-        elif (override_duration != -1):
-            data_post = {
-                "color": "ff" + color,
-                "brightness": brightness,
-                "mode": mode,
-                "override_duration": override_duration,
-                "start_time": "1900-01-01T" + start_time + ":00.000"}        
+        data_post = {
+            "color": "ff" + color,
+            "brightness": brightness,
+            "mode": mode,
+            "override_duration": override_duration,
+            "start_time": "1900-01-01T" + start_time + ":00.000"}        
         
-
         post_dumps = json.dumps(data_post)
         post_dict = json.loads(post_dumps)
         r_post = requests.post(URL_post, json = data_post)

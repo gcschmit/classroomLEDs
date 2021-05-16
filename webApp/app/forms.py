@@ -46,8 +46,6 @@ class Override(FlaskForm):
     color = StringField('Color', render_kw={'placeholder': 'Valid Format is "rrggbb"'}, validators=[DataRequired()])
     brightness = IntegerField('Brightness', render_kw={'placeholder': 'Integer value'}, validators=[DataRequired()])
     mode = StringField('Mode', render_kw={'placeholder': '"solid" or "pulse"'}, validators=[DataRequired()])
-    day_of_week = StringField('Day of the Week', render_kw={'placeholder': '"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", or "sunday"'})
-    date = StringField('Date', render_kw={'placeholder': 'Valid Format is "YYYY-MM-DD"'})
     override_duration = IntegerField('Override Duration', render_kw={'placeholder': 'Number of minutes'})
     start_time = StringField('Start Time', render_kw={'placeholder': 'Valid Format is "hh:mm"'}, validators=[DataRequired()])
     submit = SubmitField('Submit')

@@ -71,3 +71,6 @@ NameError: name 'posts' is not defined
 2021-05-16 11:38:57,967 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
 2021-05-16 11:40:02,124 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
 2021-05-16 11:40:44,688 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 13:54:41,333 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 13:56:14,705 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]
+2021-05-16 13:57:50,101 INFO: WebApp startup [in /home/whzheng/classroomLEDs/webApp/app/__init__.py:45]

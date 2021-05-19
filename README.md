@@ -41,22 +41,33 @@ Adafruit has a [tutorial](https://learn.adafruit.com/adafruit-dotstar-leds/pytho
 Adafruit [recommends](https://learn.adafruit.com/adafruit-neopixel-uberguide/powering-neopixels) adding a large capacitor (1000 µF, 6.3V) across power and ground. The breadboard has a 4700 µF capacitor across power and ground.
 
 DotStars are 5 V devices and the Raspberry Pi provides 3.3 V. Therefore, as [recommended](https://learn.adafruit.com/adafruit-dotstar-leds/power-and-connections#connecting-dotstar-leds-3004523-2) by Adafruit, the [74AHCT125 quad level-shifter](https://www.adafruit.com/product/1787) is used to boost the 3V signals to 5V.
-*LED Strip, Attributes:
-*id: int, unique identifier for each LED strip
-*scenes: List of Scenes
 
-*Scene, Attributes:
-*id: int; required; unique identifier for each scene
-*color, string; required; hex string specifying brightness, red, green, blue color; e.g., "0xbbrrggbb"
-*brightness, double between 0 and 1.0; required; higher number is brighter
-*mode: string; required; either "solid" or "pulse"
-*day_of_week: string; optional; "monday", "tuesday", etc.; if specified, is the default scene on that day of the week at the specified time
-*date: string; ISO 8601 format; optional; if specified, replaces the regularly scheduled scene for that day and time; the month, day and year is used and the time is *ignored
-*override_duration: int; optional; number of minutes to override the currently active scene; 0 will override the currently active scene until the next scheduled scene
-*start_time: string; required; ISO 8601 format; month, day, and year must be set to "1900-01-01"
-*for a day-of-week scene; time specifies the starting time of the scene
-*for an override scene; time specifies the starting time of the override, date is ignored
-*for a date scene; time specifies the starting time of the scene
+LED Strip, Attributes:
+
+id: int, unique identifier for each LED strip
+
+scenes: List of Scenes
+
+Scene, Attributes:
+
+id: int; required; unique identifier for each scene
+
+color, string; required; hex string specifying brightness, red, green, blue color; e.g., "0xbbrrggbb"
+
+brightness, double between 0 and 1.0; required; higher number is brighter
+
+mode: string; required; either "solid" or "pulse"
+
+day_of_week: string; optional; "monday", "tuesday", etc.; if specified, is the default scene on that day of the week at the specified time
+
+date: string; ISO 8601 format; optional; if specified, replaces the regularly scheduled scene for that day and time; the month, day and year is used and the time is ignored
+
+override_duration: int; optional; number of minutes to override the currently active scene; 0 will override the currently active scene until the next scheduled scene
+
+start_time: string; required; ISO 8601 format; month, day, and year must be set to "1900-01-01"
+for a day-of-week scene; time specifies the starting time of the scene
+for an override scene; time specifies the starting time of the override, date is ignored
+for a date scene; time specifies the starting time of the scene
 
 
 

@@ -199,3 +199,29 @@ Later, it should be possible for the user to edit entire schedules and not just 
 The UI of the app needs significant work.
 
 The internal design of the app needs a review and probably significant cleanup.
+
+Stories:
+
+Mobile App:
+As a teacher, I want to be able to access the mobile app in order to later be able to change and specify properties of the LEDs.
+
+As a teacher, I want to specify, via a mobile app, the color and brightness for the LEDs in my classroom in order to customize them to the activity or classes mood.
+
+As a teacher, I want to override the current color, brightness, and pattern for the LEDs in my classroom for a specified period of time in order to accommodate a unique activity or change in plans via use of a mobile app.As a teacher, I want to specify a schedule of colors, brightnesses, and patterns for the LEDs in my classroom via a Mobile App in order to customize them to the activity or bell schedule in advance.
+
+As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom on my Web App with a new schedule for any predetermined date in order to accommodate a unique bell schedule via the use of a mobile app.
+
+As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via mobile app configuration
+
+Web App:
+As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via web app configuration
+
+As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom on my Web App with a new schedule for any predetermined date in order to accommodate a unique bell schedule.
+
+As a teacher, I want to be able to see the current schedule, color, brightness, and patterns of the LEDs via the Web App in order to later customize them.
+
+As a teacher, I want to create and edit a schedule of colors, brightnesses, and patterns for the LEDs in my classroom via a Web App in order to customize them to the activity or bell schedule in advance.
+
+LED Code:
+As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via JSON configuration
+

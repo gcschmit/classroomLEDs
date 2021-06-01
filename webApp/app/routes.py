@@ -20,34 +20,34 @@ def before_request():
 @app.route('/index')
 @login_required
 def index():
-    URL_get = "http://localhost:3000/leds/1"
+#    URL_get = "http://localhost:3000/leds/1"
 
-    r = requests.get(url = URL_get)
+#    r = requests.get(url = URL_get)
 
-    data = r.json() #json object
+#    data = r.json() #json object
 
-    data_dumps = json.dumps(data)
+#    data_dumps = json.dumps(data)
 
-    data_dict = json.loads(data_dumps)
+#    data_dict = json.loads(data_dumps)
 
     #post is create a new scene and put is update the scene
 
     #scenes without a specific scene number can be used to post, but if there is a scene it will update with put
 
-    URL_put = "http://localhost:3000/leds/1/scenes/60" 
+#    URL_put = "http://localhost:3000/leds/1/scenes/60" 
 
-    data_put = {            
-        "id": 22,
-        "time":"2020-10-19T13:30:00.000",
-        "color":"ff000000",
-        "brightness": 2.0,
-        "mode":"solid"}
+#    data_put = {            
+#        "id": 22,
+#        "time":"2020-10-19T13:30:00.000",
+#        "color":"ff000000",
+#        "brightness": 2.0,
+#        "mode":"solid"}
 
-    put_dumps = json.dumps(data_put) #dump creates string object
+#    put_dumps = json.dumps(data_put) #dump creates string object
 
-    put_dict = json.loads(put_dumps)
+#    put_dict = json.loads(put_dumps)
 
-    r1 = requests.put(URL_put, json = data_put)
+#    r1 = requests.put(URL_put, json = data_put)
 #---Post Info Below---
 #    URL_post = "http://localhost:3000/leds/1/scenes"
 
@@ -81,7 +81,6 @@ def index():
 #            'author': {'username': 'Bill'},
 #            'body': r1.text
 #        }
-
 
     posts1 = [
         {
@@ -176,7 +175,7 @@ def edit_profile():
 def override():
     form = Override(current_user.username)
     if form.validate_on_submit():
-        URL_post = "http://localhost:3000/leds/1/scenes"
+        URL_post = "http://192.168.4.50:3000/leds/1/scenes"
 
         color = form.color.data
         brightness = form.brightness.data
@@ -205,7 +204,7 @@ def override():
 def date():
     form = Date(current_user.username)
     if form.validate_on_submit():
-        URL_post = "http://localhost:3000/leds/1/scenes"
+        URL_post = "http://192.168.4.50:3000/leds/1/scenes"
 
         color = form.color.data
         brightness = form.brightness.data
@@ -234,7 +233,7 @@ def date():
 def dayofweek():
     form = DayOfWeek(current_user.username)
     if form.validate_on_submit():
-        URL_post = "http://localhost:3000/leds/1/scenes"
+        URL_post = "http://192.168.4.50:3000/leds/1/scenes"
 
         color = form.color.data
         brightness = form.brightness.data

@@ -116,34 +116,74 @@ Each LED strip has an ID and a list of scenes. The attributes of a specific LED 
 
 All of the scenes of a specific LED strip, can be retrieved with a GET request to /leds/*ledID*/scenes. In addition, new scenes can be created with a POST request.
 
-Each scene has an ID, a time (stored as an ISO 8601 string where the date is ignored at the moment), a color (stored as an 8-digit hex string: alpha, red, green, blue), a brightness (stored as a floating point value between 0 and 1), and a mode (stored as a string; currently "solid" and "pulse" are supported). The attributes of a specific scene, can be retrieved with a GET request to /leds/*ledID*/scenes/*sceneID*. A specific scene can be updated with a PUT request or deleted with DELETE request.
+LED Strip, Attributes:
 
-The main thread in the script gets the scenes for the LED strip with ID 1 every 60 seconds. The most recent scene whose time has passed determines the state of the LEDs. The LEDs are updated in a separate thread every 10 milliseconds to support the pulse mode.
+* id: int, unique identifier for each LED strip
+
+* scenes: list of scenes
+
+Scene, Attributes:
+
+* id: int; required; unique identifier for each scene
+
+* color: string; required; 8-digit hex string specifying brightness, red, green, blue color; e.g., "ffrrggbb"
+
+* brightness: double between 0 and 1.0; required; higher number is brighter
+
+* mode: string; required; currently "solid" or "pulse" are supported
+
+* day_of_week: string; optional; "monday", "tuesday", etc.; if specified, is the default scene on that day of the week at the specified time
+
+* date: string; ISO 8601 format; optional; if specified, replaces the regularly scheduled scene for that day and time; the month, day and year is used and the time is ignored
+
+* override_duration: int; optional; number of minutes to override the currently active scene; 0 will override the currently active scene until the next scheduled scene
+
+* start_time: string; required; ISO 8601 format; month, day, and year must be set to "1900-01-01"
+     * for a day_of_week scene; time specifies the starting time of the scene
+     * for a date scene; time specifies the starting time of the scene
+     * for an override scene; time specifies the starting time of the override, date is ignored
+	
+The attributes of a specific scene, can be retrieved with a GET request to /leds/*ledID*/scenes/*sceneID*. A specific scene can be updated with a PUT request or deleted with DELETE request.
+
+The main thread in the script gets the scenes for the LED strip with ID 1 every 5 seconds. The most recent override or scene whose time has passed determines the state of the LEDs. The LEDs are updated in a separate thread every 10 milliseconds to support the pulse mode.
 
 
 ## webApp
 
 ### installation
 
-* Install python
-* Create the virtual environment: `python3 -m venv venv`
-* Run the virtual environment: `source venv/bin/activate`
-* Install flask: `pip install flask`
+* Start in VS Code and clone this repository
+* Change to the webApp directory
+* Install python if not done already
+* Create a python virtual environment: `$ python3 -m venv venv`
+* Activate the virtual environment: `$ source venv/bin/activate`
+* Install flask: `$ pip install flask`
+* Install the required python modules: `$ pip install -r requirements.txt`
+* Set the FLASK_APP environment variable: `export FLASK_APP=webApp.py`
+* Run flask: `$ flask run`
 
 On startup every time:
 
 * Go to the webApp directory
 * Start the virtual environment: `source venv/bin/activate`
 * Set the FLASK_APP environment variable: `export FLASK_APP=webApp.py`
+* Run flask: `flask run`
 
-Create raspi server in a separate terminal:
+Create raspi server in a separate terminal or on the Raspberry Pi:
 * Go to server directory
 * `node app.js`
-* `http://<ip address>/leds`
+* In the URL go to /leds: `http://<ip address>/leds`
 
 After installing anything new, update requirements.txt
 * `pip freeze > requirements.txt`
 
+### design
+
+The homepage currently displays all of the override options and their descriptions. Later, it should display the current schedule of LEDs and their details.
+
+The override forms can be cleaned up and more user friendly. For example: dropdowns can be used for certain fields and a color wheel can be used for the color.
+	
+Later, it should be possible for the user to edit entire schedules and not just override the current LEDs.
 
 ## mobileApp
 
@@ -159,3 +199,27 @@ After installing anything new, update requirements.txt
 The UI of the app needs significant work.
 
 The internal design of the app needs a review and probably significant cleanup.
+
+## Unfinished User Stories:
+
+### LED Code:
+
+* As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom with a new schedule for any predetermined date in order to accommodate a unique bell schedule via the use of a json file.
+* As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via JSON configuration
+	
+### Mobile App:
+	
+* As a teacher, I want to be able to access the mobile app in order to later be able to change and specify properties of the LEDs.
+* As a teacher, I want to specify, via a mobile app, the color and brightness for the LEDs in my classroom in order to customize them to the activity or classes mood.
+* As a teacher, I want to override the current color, brightness, and pattern for the LEDs in my classroom for a specified period of time in order to accommodate a unique activity or change in plans via use of a mobile app.
+* As a teacher, I want to specify a schedule of colors, brightnesses, and patterns for the LEDs in my classroom via a Mobile App in order to customize them to the activity or bell schedule in advance.
+* As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom on my Web App with a new schedule for any predetermined date in order to accommodate a unique bell schedule via the use of a mobile app.
+* As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via mobile app configuration
+
+### Web App:
+
+* As a teacher, I want to be able to see the current schedule, color, brightness, and patterns of the LEDs via the Web App in order to later customize them.
+* As a teacher, I want to create and edit a schedule of colors, brightnesses, and patterns for the LEDs in my classroom via a Web App in order to customize them to the activity or bell schedule in advance.
+* As a teacher, I want to override a previous schedule of colors, brightnesses, and patterns for the LEDs in my classroom on my Web App with a new schedule for any predetermined date in order to accommodate a unique bell schedule.
+* As a teacher, I want to have multiple LED strands in my classroom and have them function as a single strand (e.g., follow the same schedule, have a single override) via web app configuration
+

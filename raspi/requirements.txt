@@ -15,4 +15,4 @@ requests==2.24.0
 rpi-ws281x==4.2.4
 RPi.GPIO==0.7.0
 sysv-ipc==1.0.1
-urllib3==1.25.9
+urllib3==1.26.5

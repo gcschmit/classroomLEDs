@@ -55,8 +55,7 @@ def update_LEDs():
 while True:
     
     try:
-        # eventually, update the URL to that for the server running on EC2
-        url = "http://192.168.4.36"
+        url = "https://classroomLEDs.nnhsse.org/leds"
         response = requests.get(url = url)
         response.raise_for_status()
         

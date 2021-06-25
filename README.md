@@ -53,58 +53,83 @@ Based on [this tutorial](https://ourcodeworld.com/articles/read/977/how-to-deplo
 * Open ports for HTTP and HTTPS when walking through the EC2 wizard.
 * Generate a key pair for this EC2 instance. Download and save the private key, which is needed to connect to the instance in the future.
 * After the EC2 instance is running, click on the Connect button the EC2 Management Console for instructions on how to ssh into the instance.
-* On the EC2 instance, [install Node.js v10](https://github.com/nodesource/distributions/blob/master/README.md)
-	`curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
-    `sudo apt-get install -y nodejs`
-* [Install certbot](https://itnext.io/node-express-letsencrypt-generate-a-free-ssl-certificate-and-run-an-https-server-in-5-minutes-a730fbe528ca) to automate the generation and maintenance of SSL certificates so HTTPS works:
-	`sudo add-apt-repository ppa:certbot/certbot`
-	`sudo apt-get update`
-	`sudo apt-get install certbot`
-* Generate an SSL certificate:
-	`sudo certbot certonly --manual`
-	*specify scouting.team3061.org as the domain name*
-	*make a note of the a-string and a-challenge*
-	*pause here and ssh into the EC2 instance in another terminal]*
-* In the home directory, create:
-	`mkdir server`
-	`cd server/`
-	`mkdir .well-known`
-	`cd .well-known/`
-	`mkdir acme-challenge`
-	`cd acme-challenge/`
-	`vi <a-string>`
-	*paste <a-challenge> into this file*
-* Back in the server directory, [create a node server](https://gist.github.com/DavidMellul/2afcd7ecbe6ad83894972af8a2e0d536/raw/f207f9df6a96852c828462d17964ab231739eb2c/HTTPChallengeServer.js) to authenticate for the SSL certificate:
-	`vi HTTPChallengeServer.js`
-* Start the HTTPChallengeServer node server:
-	`sudo node HTTPChallengeServer.js`
-* In a browser, go to the following page to authenticate for the SSL certificate:
-	`http://<EC2 instance ip>/.well-known/acme-challenge/<a-string>` (replace a-string with the actual string)
-* The browser will download the challenge file. If that works, continue.
-* Go back to the terminal that is in the process of creating the certificate and press enter to continue.
-* Kill the HTTPChallengeServer node server.
-* Add a crontab entry to renew the SSL certificate:
-	`crontab -e`
-	`0 */12 * * * root /usr/local/bin/certbot renew >/dev/null 2>&1`
-* Generate a [new SSH key for GitHub](https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) *without a passphrase* and add it to GitHub.
-* Clone this repository.
-* Inside of the server directory for this repository:
-	`npm install`
-	`node app.js`
-* Copy the public DNS from the EC2 Management Console, and connect to the app in a browser.
-* Back on the EC2 instance, kill the node server.
+* On the EC2 instance, [install](https://github.com/nodesource/distributions/blob/master/README.md) Node.js v12
+
+```
+curl -fsSL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+* On the EC2 instance, install nginx: `sudo apt-get -y install nginx`
+* Create a reverse proxy for the Classroom LEDs Flask server. In the file /etc/nginx/sites-enabled/classroomLEDs:
+
+```
+server {
+	# listen on port 80 (http)
+	listen 80;
+	server_name classroomLEDs.nnhsse.org;
+
+	# write access and error logs to /var/log
+	access_log /var/log/classroomLEDs_access.log;
+	error_log /var/log/classroomLEDs_error.log;
+
+	location / {
+		# forward application requests to the gunicorn (Flask) server
+		proxy_pass http://localhost:5000;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+	
+	location /leds {
+		# forward application requests to the node server
+		proxy_pass http://localhost:3000;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+}
+```
+
+* Restart the nginx server: `sudo service nginx reload`
+* Install and configure [certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx)
+* Clone this repository from GitHub.
+* Inside of the webApp directory for this repository install the Flask dependencies:
+
+```
+sudo apt-get install python3-venv
+python3 -m venv venv
+source ./venv/bin/active
+pip install wheel
+pip install -r requirements.txt
+```
+
+* Inside of the server directory for this repository install the node dependencies: `npm install`
 * Install Production Manager 2, which is used to keep the node server running and restart it when changes are pushed to master:
-	`sudo npm install pm2 -g`
-	`sudo pm2 start app.js`
-* Verify that the node server is running:
-	`sudo pm2 list`
-* Configure pm2 to automatically run when the EC2 instance restarts:
-	`sudo pm2 startup`
-* Add a crontab entry to pull from GitHub every minute:
-	`crontab -e`
-	`*/1 * * * * cd /home/ubuntu/classroomLEDs && git pull`
-* Restart the node server:
-	`sudo pm2 restart app`
+
+```
+sudo npm install pm2 -g
+sudo pm2 --name classroomLEDsNode start app.js
+```
+
+* Inside of the webApp directory for this repository install the Flask dependencies: `pip3 install -r requirements.txt`
+* Add the Flask app to Production Manager 2 to keep the Flask server running and restart it when changes are pushed to master:
+
+```
+sudo pm2 --name classroomLEDsFlask start boot.sh
+```
+
+* Verify that the node and Flask servers are running: `sudo pm2 list`
+* Configure pm2 to automatically run when the EC2 instance restarts: `sudo pm2 startup`
+* Add a crontab entry to pull from GitHub every 15 minutes: `crontab -e`
+
+```
+*/15 * * * * cd /home/ubuntu/classroomLEDs && git pull
+```
+
+* Restart the node server: `sudo pm2 restart index`
 	
 ### design
 

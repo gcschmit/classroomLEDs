@@ -8,7 +8,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T07:39:00.000"
 			},
 			{
@@ -16,7 +16,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T07:45:00.000"
 			},
 			{
@@ -24,7 +24,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T08:30:00.000"
 			},
 			{
@@ -32,7 +32,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T08:35:00.000"
 			},
 			{
@@ -40,7 +40,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T08:41:00.000"
 			},
 			{
@@ -48,7 +48,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T09:29:00.000"
 			},
 			{
@@ -56,7 +56,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T09:34:00.000"
 			},
 			{
@@ -64,7 +64,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T09:40:00.000"
 			},
 			{
@@ -72,7 +72,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T10:25:00.000"
 			},
 			{
@@ -80,7 +80,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T10:30:00.000"
 			},
 			{
@@ -88,7 +88,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T10:36:00.000"
 			},
 			{
@@ -96,7 +96,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T11:21:00.000"
 			},
 			{
@@ -104,7 +104,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T11:26:00.000"
 			},
 			{
@@ -112,7 +112,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T11:32:00.000"
 			},
 			{
@@ -120,7 +120,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T12:17:00.000"
 			},
 			{
@@ -128,7 +128,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T12:22:00.000"
 			},
 			{
@@ -136,7 +136,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T12:28:00.000"
 			},
 			{
@@ -144,7 +144,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T13:13:00.000"
 			},
 			{
@@ -152,7 +152,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T13:18:00.000"
 			},
 			{
@@ -160,7 +160,7 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T13:24:00.000"
 			},
 			{
@@ -168,7 +168,7 @@
 				"color":"fff6ff00",
 				"brightness": 1.0,
 				"mode":"pulse",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T14:09:00.000"
 			},
 			{
@@ -176,7 +176,7 @@
 				"color":"ffff0000",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T14:14:00.000"
 			},
 			{
@@ -184,8 +184,888 @@
 				"color":"ff0000ff",
 				"brightness": 1.0,
 				"mode":"solid",
-				"day_of_week": "wednesday",
+				"day_of_week": "monday",
 				"start_time":"1900-01-01T14:20:00.000"
+			},
+			{
+				"id": 24,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "monday",
+				"start_time":"1900-01-01T15:05:00.000"
+			},
+			{
+				"id": 25,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "monday",
+				"start_time":"1900-01-01T15:10:00.000"
+			},
+			{
+				"id": 26,
+				"color":"00000000",
+				"brightness": 0.0,
+				"mode":"solid",
+				"day_of_week": "monday",
+				"start_time":"1900-01-01T15:15:00.000"
+			},
+			{
+				"id": 27,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T07:39:00.000"
+			},
+			{
+				"id": 28,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T07:45:00.000"
+			},
+			{
+				"id": 29,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T08:30:00.000"
+			},
+			{
+				"id": 30,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T08:35:00.000"
+			},
+			{
+				"id": 31,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T08:41:00.000"
+			},
+			{
+				"id": 32,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T09:29:00.000"
+			},
+			{
+				"id": 33,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T09:34:00.000"
+			},
+			{
+				"id": 34,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T09:40:00.000"
+			},
+			{
+				"id": 35,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T10:25:00.000"
+			},
+			{
+				"id": 36,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T10:30:00.000"
+			},
+			{
+				"id": 37,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T10:36:00.000"
+			},
+			{
+				"id": 38,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T11:21:00.000"
+			},
+			{
+				"id": 39,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T11:26:00.000"
+			},
+			{
+				"id": 40,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T11:32:00.000"
+			},
+			{
+				"id": 41,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T12:17:00.000"
+			},
+			{
+				"id": 42,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T12:22:00.000"
+			},
+			{
+				"id": 43,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T12:28:00.000"
+			},
+			{
+				"id": 44,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T13:13:00.000"
+			},
+			{
+				"id": 45,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T13:18:00.000"
+			},
+			{
+				"id": 46,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T13:24:00.000"
+			},
+			{
+				"id": 47,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T14:09:00.000"
+			},
+			{
+				"id": 48,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T14:14:00.000"
+			},
+			{
+				"id": 49,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T14:20:00.000"
+			},
+			{
+				"id": 50,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T15:05:00.000"
+			},
+			{
+				"id": 51,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T15:10:00.000"
+			},
+			{
+				"id": 52,
+				"color":"00000000",
+				"brightness": 0.0,
+				"mode":"solid",
+				"day_of_week": "friday",
+				"start_time":"1900-01-01T15:15:00.000"
+			},
+			{
+				"id": 53,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T07:39:00.000"
+			},
+			{
+				"id": 54,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T07:45:00.000"
+			},
+			{
+				"id": 55,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T08:25:00.000"
+			},
+			{
+				"id": 56,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T08:30:00.000"
+			},
+			{
+				"id": 57,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T08:35:00.000"
+			},
+			{
+				"id": 58,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T09:15:00.000"
+			},
+			{
+				"id": 59,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T09:20:00.000"
+			},
+			{
+				"id": 60,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T09:25:00.000"
+			},
+			{
+				"id": 61,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T10:05:00.000"
+			},
+			{
+				"id": 62,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T10:10:00.000"
+			},
+			{
+				"id": 63,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T10:15:00.000"
+			},
+			{
+				"id": 64,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T10:55:00.000"
+			},
+			{
+				"id": 65,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T11:00:00.000"
+			},
+			{
+				"id": 66,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T11:05:00.000"
+			},
+			{
+				"id": 67,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T11:45:00.000"
+			},
+			{
+				"id": 68,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T11:50:00.000"
+			},
+			{
+				"id": 69,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T11:55:00.000"
+			},
+			{
+				"id": 70,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T12:35:00.000"
+			},
+			{
+				"id": 71,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T12:40:00.000"
+			},
+			{
+				"id": 72,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T12:45:00.000"
+			},
+			{
+				"id": 73,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T13:25:00.000"
+			},
+			{
+				"id": 74,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T13:30:00.000"
+			},
+			{
+				"id": 75,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T13:35:00.000"
+			},
+			{
+				"id": 76,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T14:15:00.000"
+			},
+			{
+				"id": 77,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T14:20:00.000"
+			},
+			{
+				"id": 78,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T14:25:00.000"
+			},
+			{
+				"id": 79,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T15:05:00.000"
+			},
+			{
+				"id": 80,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T15:10:00.000"
+			},
+			{
+				"id": 81,
+				"color":"00000000",
+				"brightness": 0.0,
+				"mode":"solid",
+				"day_of_week": "tuesday",
+				"start_time":"1900-01-01T15:15:00.000"
+			},
+			{
+				"id": 53,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T07:39:00.000"
+			},
+			{
+				"id": 54,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T07:45:00.000"
+			},
+			{
+				"id": 55,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T08:25:00.000"
+			},
+			{
+				"id": 56,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T08:30:00.000"
+			},
+			{
+				"id": 57,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T08:35:00.000"
+			},
+			{
+				"id": 58,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T09:15:00.000"
+			},
+			{
+				"id": 59,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T09:20:00.000"
+			},
+			{
+				"id": 60,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T09:25:00.000"
+			},
+			{
+				"id": 61,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T10:05:00.000"
+			},
+			{
+				"id": 62,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T10:10:00.000"
+			},
+			{
+				"id": 63,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T10:15:00.000"
+			},
+			{
+				"id": 64,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T10:55:00.000"
+			},
+			{
+				"id": 65,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T11:00:00.000"
+			},
+			{
+				"id": 66,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T11:05:00.000"
+			},
+			{
+				"id": 67,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T11:45:00.000"
+			},
+			{
+				"id": 68,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T11:50:00.000"
+			},
+			{
+				"id": 69,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T11:55:00.000"
+			},
+			{
+				"id": 70,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T12:35:00.000"
+			},
+			{
+				"id": 71,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T12:40:00.000"
+			},
+			{
+				"id": 72,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T12:45:00.000"
+			},
+			{
+				"id": 73,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T13:25:00.000"
+			},
+			{
+				"id": 74,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T13:30:00.000"
+			},
+			{
+				"id": 75,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T13:35:00.000"
+			},
+			{
+				"id": 76,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T14:15:00.000"
+			},
+			{
+				"id": 77,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T14:20:00.000"
+			},
+			{
+				"id": 78,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T14:25:00.000"
+			},
+			{
+				"id": 79,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T15:05:00.000"
+			},
+			{
+				"id": 80,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T15:10:00.000"
+			},
+			{
+				"id": 81,
+				"color":"00000000",
+				"brightness": 0.0,
+				"mode":"solid",
+				"day_of_week": "thursday",
+				"start_time":"1900-01-01T15:15:00.000"
+			},
+			{
+				"id": 1,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T08:55:00.000"
+			},
+			{
+				"id": 2,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T09:00:00.000"
+			},
+			{
+				"id": 3,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T09:37:00.000"
+			},
+			{
+				"id": 4,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T09:42:00.000"
+			},
+			{
+				"id": 5,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T09:47:00.000"
+			},
+			{
+				"id": 6,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T10:24:00.000"
+			},
+			{
+				"id": 7,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T10:29:00.000"
+			},
+			{
+				"id": 8,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T10:34:00.000"
+			},
+			{
+				"id": 9,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T11:11:00.000"
+			},
+			{
+				"id": 10,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T11:16:00.000"
+			},
+			{
+				"id": 11,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T11:21:00.000"
+			},
+			{
+				"id": 12,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T11:58:00.000"
+			},
+			{
+				"id": 13,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T12:03:00.000"
+			},
+			{
+				"id": 14,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T12:08:00.000"
+			},
+			{
+				"id": 15,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T12:44:00.000"
+			},
+			{
+				"id": 16,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T12:49:00.000"
+			},
+			{
+				"id": 17,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T12:54:00.000"
+			},
+			{
+				"id": 18,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T13:31:00.000"
+			},
+			{
+				"id": 19,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T13:36:00.000"
+			},
+			{
+				"id": 20,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T13:41:00.000"
+			},
+			{
+				"id": 21,
+				"color":"fff6ff00",
+				"brightness": 1.0,
+				"mode":"pulse",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T14:18:00.000"
+			},
+			{
+				"id": 22,
+				"color":"ffff0000",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T14:23:00.000"
+			},
+			{
+				"id": 23,
+				"color":"ff0000ff",
+				"brightness": 1.0,
+				"mode":"solid",
+				"day_of_week": "wednesday",
+				"start_time":"1900-01-01T14:28:00.000"
 			},
 			{
 				"id": 24,

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    {% if form %}
+    {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+
+    <h3>Override Existing LEDs:</h3>
+    <br>
+    {% for post in posts1 %}
+        <p><a href="{{ url_for('dayofweek') }}">Override Day of Week</a></p>
+        {% include '_post.html' %}
+        <br>
+        <br>
+    {% endfor %}
+    {% for post in posts2 %}
+        <p><a href="{{ url_for('date') }}">Override Date</a></p>
+        {% include '_post.html' %}
+        <br>
+        <br>
+    {% endfor %}
+    {% for post in posts3 %}
+        <p><a href="{{ url_for('override') }}">Override Duration</a></p>
+        {% include '_post.html' %}
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}

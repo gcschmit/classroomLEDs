@@ -55,7 +55,7 @@ def update_LEDs():
 while True:
     
     try:
-        url = "https://classroomLEDs.nnhsse.org/leds"
+        url = "https://classroomLEDs.nnhsse.org/leds/1"
         response = requests.get(url = url)
         response.raise_for_status()
         

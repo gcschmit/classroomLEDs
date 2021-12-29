@@ -129,7 +129,7 @@ sudo pm2 --name classroomLEDsFlask start boot.sh
 */15 * * * * cd /home/ubuntu/classroomLEDs && git pull
 ```
 
-* Restart the node server: `sudo pm2 restart index`
+* Restart the node server: `sudo pm2 restart classroomLEDsNode`
 	
 ### design
 

@@ -12,7 +12,7 @@ led_color = (0, 0, 0)
 led_brightness = 0
 led_mode = 0 # 0: solid; 1: pulse
 
-def update_LEDs():
+def update_LEDs(lock):
     # Use SPI on the Raspberry Pi which is faster than bit banging.
     # Explicitly slow the baud rate to 16 MHz using the undocumented parameter which
     #   appears to improve reliability.
@@ -25,7 +25,9 @@ def update_LEDs():
     
     while True:
         if led_mode == 0:
+        	lock.acquire()
             color_with_brightness = led_color + (led_brightness,)
+            lock.release()
             pixels.fill(color_with_brightness)
             pixels.show()
             time.sleep(4)
@@ -42,13 +44,17 @@ def update_LEDs():
                 temp_led_brightness = led_brightness
                 dimming = True
         
+        	lock.acquire()
             color_with_brightness = led_color + (temp_led_brightness,)
+            lock.release()
             pixels.fill(color_with_brightness)
             pixels.show()
             time.sleep(0.01)
 
 
-led_thread = threading.Thread(target = update_LEDs, daemon=True)
+# create a semaphore used to protect the led_color and led_brightness variables
+lock = threading.Lock()
+led_thread = threading.Thread(target = update_LEDs, args=(lock,), daemon=True)
 led_thread.start()
 
 
@@ -133,9 +139,11 @@ while True:
                     temp_led_mode = led_modes[scene["mode"]]
                     print(temp_led_mode)
     
+    lock.acquire()
     led_color = temp_led_color;
     led_brightness = temp_led_brightness;
     led_mode = temp_led_mode;
+    lock.release()
 
     print("color", led_color)
     print("brightness", led_brightness)

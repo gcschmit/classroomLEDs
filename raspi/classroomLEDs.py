@@ -3,8 +3,8 @@ import datetime
 import requests
 import threading
 from requests.exceptions import HTTPError
-#import adafruit_dotstar as dotstar
-#import board
+import adafruit_dotstar as dotstar
+import board
 
 num_pixels = 180
 led_modes = {"solid": 0, "pulse": 1}
@@ -47,8 +47,8 @@ def update_LEDs():
         time.sleep(0.01)
 
 
-#led_thread = threading.Thread(target = update_LEDs, daemon=True)
-#led_thread.start()
+led_thread = threading.Thread(target = update_LEDs, daemon=True)
+led_thread.start()
 
 
 

@@ -1,0 +1,11 @@
+[Service]
+WorkingDirectory=/home/pi/GitHub/classroomLEDs/raspi
+ExecStart=python3 /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.py
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=classroomLEDs
+User=pi
+Group=pi
+[Install]
+WantedBy=multi-user.target

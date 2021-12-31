@@ -17,14 +17,12 @@ There are four components that comprise this project:
 * [Enable SPI](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-spi) on the Raspberry Pi and reboot.
 * Clone this repository.
 * Change to the raspi directory.
-* Create a python virtual environment: `$ python3 -m venv venv`
-* Activate the virtual environment: `$ source venv/bin/activate`
-* Upgrade the setuptools module: `$ pip install --upgrade setuptools`
-* Install the required python modules: `$ pip install -r requirements.txt`
+* Upgrade the setuptools module: `$ pip3 install --upgrade setuptools`
+* Install the required python modules: `$ pip3 install -r requirements.txt`
 * Edit /etc/rc.local to specify that the boot.sh script should run at boot
 
 ```
-bash -c 'bash /home/pi/GitHub/classroomLEDs/raspi/boot.sh > /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.log 2>&1' &
+bash -c 'python3 /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.py > /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.log 2>&1' &
 ```
 
 * Reboot the pi

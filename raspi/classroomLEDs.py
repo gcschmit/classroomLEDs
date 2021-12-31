@@ -17,10 +17,10 @@ lock = threading.Lock()
 
 
 def update_LEDs():
-	global led_mode
-	global led_color
-	global led_brightness
-	
+    global led_mode
+    global led_color
+    global led_brightness
+    
     # Use SPI on the Raspberry Pi which is faster than bit banging.
     # Explicitly slow the baud rate to 16 MHz using the undocumented parameter which
     #   appears to improve reliability.

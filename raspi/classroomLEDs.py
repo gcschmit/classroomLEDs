@@ -93,6 +93,9 @@ led_thread = threading.Thread(target = update_LEDs, daemon=True)
 led_thread.start()
 
 
+temp_led_color = (0, 0, 0)
+temp_led_brightness = 0
+temp_led_mode = 0
 
 while True:
     

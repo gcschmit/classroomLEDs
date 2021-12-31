@@ -21,7 +21,13 @@ There are four components that comprise this project:
 * Activate the virtual environment: `$ source venv/bin/activate`
 * Upgrade the setuptools module: `$ pip install --upgrade setuptools`
 * Install the required python modules: `$ pip install -r requirements.txt`
-* Run the python script : `$ python classroomLEDs.py`
+* Edit /etc/rc.local to specify that the boot.sh script should run at boot
+
+```
+bash -c 'bash /home/pi/GitHub/classroomLEDs/raspi/boot.sh > /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.log 2>&1' &
+```
+
+* Reboot the pi
 
 ### hardware configuration
 

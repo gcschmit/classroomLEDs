@@ -24,27 +24,28 @@ def update_LEDs():
     dimming = True;
     
     while True:
-        if dimming:
-            temp_led_brightness -= 0.005
-        else:
-            temp_led_brightness += 0.005
-        
-        if temp_led_brightness < 0:
-            temp_led_brightness = 0 
-            dimming = False
-        elif temp_led_brightness > led_brightness:
-            temp_led_brightness = led_brightness
-            dimming = True
-        
         if led_mode == 0:
             color_with_brightness = led_color + (led_brightness,)
+            pixels.fill(color_with_brightness)
+            pixels.show()
+            time.sleep(4)
         else:
-            color_with_brightness = led_color + (temp_led_brightness,)
+            if dimming:
+                temp_led_brightness -= 0.005
+            else:
+                temp_led_brightness += 0.005
         
-        #print(color_with_brightness)
-        pixels.fill(color_with_brightness)
-        pixels.show()
-        time.sleep(0.01)
+            if temp_led_brightness < 0:
+                temp_led_brightness = 0 
+                dimming = False
+            elif temp_led_brightness > led_brightness:
+                temp_led_brightness = led_brightness
+                dimming = True
+        
+            color_with_brightness = led_color + (temp_led_brightness,)
+            pixels.fill(color_with_brightness)
+            pixels.show()
+            time.sleep(0.01)
 
 
 led_thread = threading.Thread(target = update_LEDs, daemon=True)

@@ -12,7 +12,8 @@ led_color = (0, 0, 0)
 led_brightness = 0
 led_mode = 0 # 0: solid; 1: pulse
 
-# create a semaphore used to protect the led_color and led_brightness variables
+# create a lock used to protect the led_color and led_brightness variables from race conditions
+#   should really use an event to signal the thread that the LEDs have changed
 lock = threading.Lock()
 
 
@@ -22,11 +23,11 @@ def update_LEDs():
     global led_brightness
     
     # Use SPI on the Raspberry Pi which is faster than bit banging.
-    # Explicitly slow the baud rate to 16 MHz using the undocumented parameter which
+    # Explicitly slow the baud rate to 1.6 MHz using the undocumented parameter which
     #   appears to improve reliability.
     # The pixel order of the DotStar strips that we have appear to be BGR, but there are
     #   still unresolved issues regarding colors.   
-    pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=16000000)
+    pixels= dotstar.DotStar(board.SCK, board.MOSI, num_pixels, brightness=0.2, pixel_order=dotstar.BGR, auto_write=False, baudrate=1600000)
     
     temp_led_brightness = 0;
     dimming = True;

@@ -12,7 +12,15 @@ led_color = (0, 0, 0)
 led_brightness = 0
 led_mode = 0 # 0: solid; 1: pulse
 
-def update_LEDs(lock):
+# create a semaphore used to protect the led_color and led_brightness variables
+lock = threading.Lock()
+
+
+def update_LEDs():
+	global led_mode
+	global led_color
+	global led_brightness
+	
     # Use SPI on the Raspberry Pi which is faster than bit banging.
     # Explicitly slow the baud rate to 16 MHz using the undocumented parameter which
     #   appears to improve reliability.
@@ -52,9 +60,7 @@ def update_LEDs(lock):
             time.sleep(0.01)
 
 
-# create a semaphore used to protect the led_color and led_brightness variables
-lock = threading.Lock()
-led_thread = threading.Thread(target = update_LEDs, args=(lock,), daemon=True)
+led_thread = threading.Thread(target = update_LEDs, daemon=True)
 led_thread.start()
 
 

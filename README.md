@@ -19,10 +19,12 @@ There are four components that comprise this project:
 * Change to the raspi directory.
 * Upgrade the setuptools module: `$ pip3 install --upgrade setuptools`
 * Install the required python modules: `$ pip3 install -r requirements.txt`
-* Edit /etc/rc.local to specify that the boot.sh script should run at boot
+* Install and enable the service:
 
 ```
-bash -c 'python3 /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.py > /home/pi/GitHub/classroomLEDs/raspi/classroomLEDs.log 2>&1' &
+sudo cp ~/GitHub/classroomLEDs/raspi/classroomLEDs.service  /etc/systemd/system/
+sudo chmod u+rwx /etc/systemd/system/classroomLEDs.service
+sudo systemctl enable classroomLEDs
 ```
 
 * Reboot the pi

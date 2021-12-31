@@ -17,12 +17,12 @@ There are four components that comprise this project:
 * [Enable SPI](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-spi) on the Raspberry Pi and reboot.
 * Clone this repository.
 * Change to the raspi directory.
-* Upgrade the setuptools module: `$ pip3 install --upgrade setuptools`
-* Install the required python modules: `$ pip3 install -r requirements.txt`
+* Upgrade the setuptools module: `pip3 install --upgrade setuptools`
+* Install the required python modules: `pip3 install -r requirements.txt`
 * Install and enable the service:
 
 ```
-sudo cp ~/GitHub/classroomLEDs/raspi/classroomLEDs.service  /etc/systemd/system/
+sudo cp classroomLEDs.service  /etc/systemd/system/
 sudo chmod u+rwx /etc/systemd/system/classroomLEDs.service
 sudo systemctl enable classroomLEDs
 ```
@@ -186,12 +186,12 @@ The main thread in the script gets the scenes for the LED strip with ID 1 every 
 * Start in VS Code and clone this repository
 * Change to the webApp directory
 * Install python if not done already
-* Create a python virtual environment: `$ python3 -m venv venv`
-* Activate the virtual environment: `$ source venv/bin/activate`
-* Install flask: `$ pip install flask`
-* Install the required python modules: `$ pip install -r requirements.txt`
+* Create a python virtual environment: `python3 -m venv venv`
+* Activate the virtual environment: `source venv/bin/activate`
+* Install flask: `pip install flask`
+* Install the required python modules: `pip install -r requirements.txt`
 * Set the FLASK_APP environment variable: `export FLASK_APP=webApp.py`
-* Run flask: `$ flask run`
+* Run flask: `flask run`
 
 On startup every time:
 

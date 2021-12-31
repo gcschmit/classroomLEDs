@@ -73,7 +73,7 @@ def update_scene():
             response.raise_for_status()
         
             jsonResponse = response.json()
-            print(jsonResponse)
+            #print(jsonResponse)
         
         except HTTPError as http_err:
             print(f'HTTP error occurred: {http_err}')
@@ -100,18 +100,18 @@ temp_led_mode = 0
 while True:
     
     scenes_lock.acquire()
-    print(scenes)
+    #print(scenes)
     
     # don't assume that the scenes are sorted by time; it is important that they are
     #   since the LEDs will be set to the most recent scence whose time has passed
     scenes.sort(key=lambda k: k['start_time'])
     
     for scene in scenes:
-        print(scene)
-        print(scene["start_time"])
-        print(scene["color"])
-        print(scene["brightness"])
-        print(scene["mode"])
+        #print(scene)
+        #print(scene["start_time"])
+        #print(scene["color"])
+        #print(scene["brightness"])
+        #print(scene["mode"])
 
         if "day_of_week" in scene:
             week_days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
@@ -122,46 +122,46 @@ while True:
                 date_now = datetime.datetime.now()
                 sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
                 now = datetime.time(date_now.hour, date_now.minute, date_now.second)
-                print(sch_time)
-                print(now)
+                #print(sch_time)
+                #print(now)
         
                 if sch_time < now:
                     # the color can be specified as a tuple with 4 elements: (R, G, B, brightness)
                     temp_led_color = tuple(int(scene["color"][i:i+2], 16) for i in (2, 4, 6))
-                    print(temp_led_color)
+                    #print(temp_led_color)
                     temp_led_brightness = scene["brightness"]
-                    print(temp_led_brightness)
+                    #print(temp_led_brightness)
                     temp_led_mode = led_modes[scene["mode"]]
-                    print(temp_led_mode)
+                    #print(temp_led_mode)
         elif "date" in scene:
             sch_date = datetime.datetime.strptime(scene["date"], '%Y-%m-%dT%H:%M:%S.%f')
             date_now = datetime.datetime.now()
             if(sch_date.year == date_now.year and sch_date.month == date_now.month and sch_date.day == date_now.day):
                 # the color can be specified as a tuple with 4 elements: (R, G, B, brightness)
                 temp_led_color = tuple(int(scene["color"][i:i+2], 16) for i in (2, 4, 6))
-                print(temp_led_color)
+                #print(temp_led_color)
                 temp_led_brightness = scene["brightness"]
-                print(temp_led_brightness)
+                #print(temp_led_brightness)
                 temp_led_mode = led_modes[scene["mode"]]
-                print(temp_led_mode)
+                #print(temp_led_mode)
         elif "override_duration" in scene:
                 sch_date = datetime.datetime.strptime(scene["start_time"], '%Y-%m-%dT%H:%M:%S.%f')
                 date_now = datetime.datetime.now()
                 sch_time = datetime.time(sch_date.hour, sch_date.minute, sch_date.second)
                 now = datetime.time(date_now.hour, date_now.minute, date_now.second)
                 override_end = datetime.time(sch_date.hour, sch_date.minute + scene["override_duration"], sch_date.second)
-                print(sch_time)
-                print(now)
-                print(override_end)
+                #print(sch_time)
+                #print(now)
+                #print(override_end)
         
                 if sch_time < now and (scene["override_duration"] == 0 or override_end > now):
                     # the color can be specified as a tuple with 4 elements: (R, G, B, brightness)
                     temp_led_color = tuple(int(scene["color"][i:i+2], 16) for i in (2, 4, 6))
-                    print(temp_led_color)
+                    #print(temp_led_color)
                     temp_led_brightness = scene["brightness"]
-                    print(temp_led_brightness)
+                    #print(temp_led_brightness)
                     temp_led_mode = led_modes[scene["mode"]]
-                    print(temp_led_mode)
+                    #print(temp_led_mode)
     
     scenes_lock.release()
     
@@ -171,8 +171,8 @@ while True:
     led_mode = temp_led_mode;
     color_lock.release()
 
-    print("color", led_color)
-    print("brightness", led_brightness)
-    print("mode", led_mode)
+    #print("color", led_color)
+    #print("brightness", led_brightness)
+    #print("mode", led_mode)
     
     time.sleep(5)

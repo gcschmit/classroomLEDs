@@ -1090,14 +1090,6 @@
 				"mode":"solid",
 				"day_of_week": "wednesday",
 				"start_time":"1900-01-01T15:15:00.000"
-			},
-			{
-				"id": 108,
-				"color":"fff6ff00",
-				"brightness": 1.0,
-				"mode":"pulse",
-				"day_of_week": "friday",
-				"start_time":"1900-01-01T15:16:00.000"
 			}
 		]
 	}

@@ -11,10 +11,12 @@ led_modes = {"solid": 0, "pulse": 1}
 led_color = (0, 0, 0)
 led_brightness = 0
 led_mode = 0 # 0: solid; 1: pulse
+scenes = []
 
 # create a lock used to protect the led_color and led_brightness variables from race conditions
 #   should really use an event to signal the thread that the LEDs have changed
-lock = threading.Lock()
+color_lock = threading.Lock()
+scenes_lock = threading.Lock()
 
 
 def update_LEDs():
@@ -34,9 +36,9 @@ def update_LEDs():
     
     while True:
         if led_mode == 0:
-            lock.acquire()
+            color_lock.acquire()
             color_with_brightness = led_color + (led_brightness,)
-            lock.release()
+            color_lock.release()
             pixels.fill(color_with_brightness)
             pixels.show()
             time.sleep(4)
@@ -53,14 +55,40 @@ def update_LEDs():
                 temp_led_brightness = led_brightness
                 dimming = True
         
-            lock.acquire()
+            color_lock.acquire()
             color_with_brightness = led_color + (temp_led_brightness,)
-            lock.release()
+            color_lock.release()
             pixels.fill(color_with_brightness)
             pixels.show()
             time.sleep(0.01)
 
 
+def update_scene():
+    global scenes
+    
+    while True:
+        try:
+            url = "https://classroomLEDs.nnhsse.org/leds/1"
+            response = requests.get(url = url)
+            response.raise_for_status()
+        
+            jsonResponse = response.json()
+            print(jsonResponse)
+        
+        except HTTPError as http_err:
+            print(f'HTTP error occurred: {http_err}')
+        except Exception as err:
+            print(f'Other error occurred: {err}')
+
+        scenes_lock.acquire()
+        scenes = jsonResponse["scenes"]
+        scenes_lock.release()
+        
+        time.sleep(60)
+
+
+scenes_thread = threading.Thread(target = update_scene, daemon=True)
+scenes_thread.start()
 led_thread = threading.Thread(target = update_LEDs, daemon=True)
 led_thread.start()
 
@@ -68,21 +96,7 @@ led_thread.start()
 
 while True:
     
-    try:
-        url = "https://classroomLEDs.nnhsse.org/leds/1"
-        response = requests.get(url = url)
-        response.raise_for_status()
-        
-        jsonResponse = response.json()
-        print(jsonResponse)
-        
-    except HTTPError as http_err:
-        print(f'HTTP error occurred: {http_err}')
-    except Exception as err:
-        print(f'Other error occurred: {err}')
-
-    
-    scenes = jsonResponse["scenes"]
+    scenes_lock.acquire()
     print(scenes)
     
     # don't assume that the scenes are sorted by time; it is important that they are
@@ -146,17 +160,16 @@ while True:
                     temp_led_mode = led_modes[scene["mode"]]
                     print(temp_led_mode)
     
-    lock.acquire()
+    scenes_lock.release()
+    
+    color_lock.acquire()
     led_color = temp_led_color;
     led_brightness = temp_led_brightness;
     led_mode = temp_led_mode;
-    lock.release()
+    color_lock.release()
 
     print("color", led_color)
     print("brightness", led_brightness)
     print("mode", led_mode)
     
-    # a more sophisticated approach is needed where the server is checked only 
-    #   occasionally but the LEDs are updated based on the last-read schedule more
-    #   frequently
     time.sleep(5)

@@ -25,7 +25,7 @@ def update_LEDs(lock):
     
     while True:
         if led_mode == 0:
-        	lock.acquire()
+            lock.acquire()
             color_with_brightness = led_color + (led_brightness,)
             lock.release()
             pixels.fill(color_with_brightness)
@@ -44,7 +44,7 @@ def update_LEDs(lock):
                 temp_led_brightness = led_brightness
                 dimming = True
         
-        	lock.acquire()
+            lock.acquire()
             color_with_brightness = led_color + (temp_led_brightness,)
             lock.release()
             pixels.fill(color_with_brightness)

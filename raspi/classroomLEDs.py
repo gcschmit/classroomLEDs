@@ -84,7 +84,7 @@ def update_scene():
         scenes = jsonResponse["scenes"]
         scenes_lock.release()
         
-        time.sleep(60)
+        time.sleep(600)
 
 
 scenes_thread = threading.Thread(target = update_scene, daemon=True)
